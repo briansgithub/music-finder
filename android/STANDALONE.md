@@ -188,3 +188,12 @@ The Dislike button sits next to Love / Like / Meh.
   - per-card checks: blocked, session suppression or chips, artist spacing, already rated, artist just disliked.
 - **UI:** the view model shows `p.rec` immediately and settles in the background. Later taps wait for the settle to finish. A prefetch is only kept when it finished for the same card and request.
 
+
+### Default Last.fm key (0.5.1)
+
+Builds read `LASTFM_API_KEY` from the local, git-ignored `../secrets/lastfm.env`.
+The shared secret is deliberately never packaged. A nonblank Settings key overrides
+the bundled default; saving a blank key resets to the default. A build without
+the local file still works, but requires a Settings key for Last.fm sources.
+Like any key shipped in an APK, this public API key can be extracted from the
+binary; do not use this mechanism for passwords or Last.fm shared secrets.

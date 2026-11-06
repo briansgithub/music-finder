@@ -31,3 +31,4 @@ netease_list.txt
 .env
 *.keystore
 *.jks
+secrets/

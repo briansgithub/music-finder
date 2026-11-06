@@ -1,3 +1,8 @@
+## 0.5.1
+
+- Build-time default Last.fm API key from ignored local secrets; Settings overrides remain supported. Shared secret is not packaged.
+- New adaptive music-discovery launcher icon and themed monochrome variant.
+
 # Changelog — Music Finder
 
 Versions are app versions (`android/app/build.gradle.kts`). The engine version (Python `config.VERSION`, Kotlin `EngineConfig.VERSION`) is listed alongside.

@@ -1,8 +1,17 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
+// Local-only public API key. Never package the Last.fm shared secret.
+val lastfmProperties = Properties().apply {
+    val file = rootProject.file("../secrets/lastfm.env")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+val defaultLastfmKey = (lastfmProperties.getProperty("LASTFM_API_KEY") ?: "").trim().removeSurrounding("\"").removeSurrounding("'")
+require(defaultLastfmKey.isEmpty() || defaultLastfmKey.matches(Regex("[a-fA-F0-9]{32}"))) { "Invalid Last.fm API key format" }
 android {
     namespace = "com.brian.musicrec"
     compileSdk = 35
@@ -10,8 +19,9 @@ android {
         applicationId = "com.brian.musicrec"
         minSdk = 26          // Pixel-era; covers Pixel 1+
         targetSdk = 35
-        versionCode = 4
-        versionName = "0.5.0"
+        versionCode = 5
+        versionName = "0.5.1"
+        buildConfigField("String", "LASTFM_API_KEY", "\"$defaultLastfmKey\"")
         vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
@@ -33,7 +43,7 @@ android {
             signingConfig = signingConfigs.getByName("debug") // debug-signed until release keystore exists
         }
     }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

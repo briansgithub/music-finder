@@ -90,7 +90,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     var freshExpand90 by mutableStateOf(prefs.getBoolean("fresh_expand_90", false))
         private set
     /** Optional Last.fm API key (Settings). Blank = Last.fm sources skipped. Never a Google account. */
-    var lastfmKey by mutableStateOf(prefs.getString("lastfm_api_key", "") ?: "")
+    var lastfmKey by mutableStateOf(prefs.getString("lastfm_api_key", "")?.takeIf { it.isNotBlank() } ?: com.brian.musicrec.BuildConfig.LASTFM_API_KEY)
     var funnelInfo by mutableStateOf("")
     var friendsQueue by mutableStateOf<List<com.brian.musicrec.core.engine.LocalEngine.FriendsCard>>(emptyList())
     var friendsAudition by mutableStateOf<List<com.brian.musicrec.core.engine.LocalEngine.FriendsCard>>(emptyList())
@@ -291,7 +291,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     fun expandFreshAndRetry() { setExpand90(true); freshExhausted = null; loadNext() }
 
     fun saveLastfmKey(v: String) {
-        lastfmKey = v.trim()
+        lastfmKey = v.trim().ifBlank { com.brian.musicrec.BuildConfig.LASTFM_API_KEY }
         prefs.edit().putString("lastfm_api_key", lastfmKey).apply()
         if (!useRemote) viewModelScope.launch(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).lastfmApiKey = lastfmKey }
     }
