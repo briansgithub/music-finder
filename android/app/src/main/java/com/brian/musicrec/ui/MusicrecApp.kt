@@ -85,6 +85,16 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     var engineInfo by mutableStateOf("")
     /** How many ratings/not-nows can be undone (Undo hidden at 0). */
     var undoDepth by mutableStateOf(0)
+    /** Fresh lane ran dry (on-device): show the labeled 90-day expansion offer. */
+    var freshExhausted by mutableStateOf<String?>(null)
+    var freshExpand90 by mutableStateOf(prefs.getBoolean("fresh_expand_90", false))
+        private set
+    /** Optional Last.fm API key (Settings). Blank = Last.fm sources skipped. Never a Google account. */
+    var lastfmKey by mutableStateOf(prefs.getString("lastfm_api_key", "") ?: "")
+    var funnelInfo by mutableStateOf("")
+    var friendsQueue by mutableStateOf<List<com.brian.musicrec.core.engine.LocalEngine.FriendsCard>>(emptyList())
+    var friendsAudition by mutableStateOf<List<com.brian.musicrec.core.engine.LocalEngine.FriendsCard>>(emptyList())
+    var friendsStatus by mutableStateOf("")
 
     init {
         LocalEngineHolder.allowNetworkResolve = allowOnlineLookup
@@ -95,7 +105,11 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun engine(): MusicEngine =
         if (useRemote) RemoteMusicEngine(baseUrl)
-        else OnDeviceMusicEngine(LocalEngineHolder.get(getApplication()).also { it.freshMinConfidence = freshMinConfidence.toDouble() })
+        else OnDeviceMusicEngine(LocalEngineHolder.get(getApplication()).also {
+            it.freshMinConfidence = freshMinConfidence.toDouble()
+            it.freshExpandDays = if (freshExpand90) 90 else null
+            it.lastfmApiKey = lastfmKey
+        })
 
     private fun persistDials() {
         prefs.edit()
@@ -135,7 +149,16 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
             rec = r
             engineReachable = true
             if (r != null && r.ytmHandoff != "watch" && !useRemote) upgradeVideoLater(r)
-            status = if (r == null) "No recommendation — enable more genres, or import a fresher seed in Settings." else "OK · ${if (useRemote) "remote" else "on-device"}"
+            val ex = if (r == null && !useRemote) withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).lastExhaustion } else null
+            freshExhausted = ex?.let {
+                "No fresh releases left in the ${it["fresh_days"]}-day window (after filters)." +
+                    if (it["can_expand"] == true) " You can widen it to 90 days — those cards are labeled “fresh (90-day)”." else ""
+            }
+            status = when {
+                freshExhausted != null -> "Fresh lane exhausted"
+                r == null -> "No recommendation — enable more genres, or import a fresher seed in Settings."
+                else -> "OK · ${if (useRemote) "remote" else "on-device"}"
+            }
         } catch (e: Exception) {
             engineReachable = false
             status = "Engine error: ${e.message}"
@@ -180,6 +203,80 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
         if (!useRemote) viewModelScope.launch(Dispatchers.IO) {
             LocalEngineHolder.get(getApplication()).freshMinConfidence = freshMinConfidence.toDouble()
         }
+    }
+
+    fun setExpand90(on: Boolean) {
+        freshExpand90 = on
+        prefs.edit().putBoolean("fresh_expand_90", on).apply()
+        if (!useRemote) viewModelScope.launch(Dispatchers.IO) {
+            LocalEngineHolder.get(getApplication()).freshExpandDays = if (on) 90 else null
+        }
+    }
+
+    fun expandFreshAndRetry() { setExpand90(true); freshExhausted = null; loadNext() }
+
+    fun saveLastfmKey(v: String) {
+        lastfmKey = v.trim()
+        prefs.edit().putString("lastfm_api_key", lastfmKey).apply()
+        if (!useRemote) viewModelScope.launch(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).lastfmApiKey = lastfmKey }
+    }
+
+    /** On-device refill: Last.fm (if a key is set) + MusicBrainz, through the one rate-limited queue. */
+    fun refill() = viewModelScope.launch {
+        if (useRemote) { status = "Refill runs on-device only"; return@launch }
+        busy = true
+        status = "Refilling candidates (rate-limited)…"
+        try {
+            val rep = withContext(Dispatchers.IO) {
+                val e = LocalEngineHolder.get(getApplication()).also { it.lastfmApiKey = lastfmKey }
+                DebugLog.call("refill") { e.refill() }
+            }
+            status = "Refill: +${rep.added()} candidates · ${rep.notes.joinToString(" · ")}"
+            DebugLog.info("refill funnel: ${rep.funnel}")
+            refreshFunnel()
+        } catch (e: Exception) {
+            status = "refill failed: ${e.message}"
+        } finally {
+            busy = false
+        }
+    }
+
+    fun refreshFunnel() = viewModelScope.launch {
+        funnelInfo = withContext(Dispatchers.IO) {
+            runCatching {
+                LocalEngineHolder.get(getApplication()).funnelReport().entries.joinToString("\n") { "${it.key}: ${it.value}" }
+            }.getOrElse { "funnel unavailable: ${it.message}" }
+        }
+    }
+
+    // ---- Friends mode (on-device) ----
+    fun loadFriends() = viewModelScope.launch {
+        if (useRemote) { friendsStatus = "Friends mode runs on-device only"; return@launch }
+        val (q, a) = withContext(Dispatchers.IO) {
+            val e = LocalEngineHolder.get(getApplication())
+            e.friendsQueue() to e.friendsAudition()
+        }
+        friendsQueue = q
+        friendsAudition = a
+        friendsStatus = if (q.isEmpty()) "No Loved/Liked tracks reach broad appeal ≥ 0.70 yet. Broad appeal needs Last.fm listener counts: add a Last.fm API key in Settings and run Refill." else "${q.size} crowd-pleasers"
+    }
+
+    fun groupReact(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, reaction: String) = viewModelScope.launch {
+        withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).groupReact(card.rec, reaction) }
+        undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
+        friendsStatus = "Group reaction saved (${reaction.replace('_', ' ')}) — group profile only"
+    }
+
+    fun friendsContextRate(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, rating: String) = viewModelScope.launch {
+        withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).friendsContextRate(card.rec, rating) }
+        undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
+        friendsStatus = "Saved $rating for friends context — your personal recs are unchanged"
+    }
+
+    fun teachPersonal(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, rating: String) = viewModelScope.launch {
+        withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).teachPersonal(card.rec, rating) }
+        undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
+        friendsStatus = "Also taught your personal recs: $rating"
     }
 
     fun notNow() = viewModelScope.launch {
@@ -374,7 +471,7 @@ internal fun mergeEnabledGenres(
     return if (remoteAvailable.isNotEmpty() && kept.containsAll(remoteAvailable)) null else kept
 }
 
-private enum class Screen { MAIN, SETTINGS, DEBUG }
+private enum class Screen { MAIN, SETTINGS, DEBUG, FRIENDS }
 
 @Composable
 fun MusicrecApp(vm: RecViewModel = viewModel()) {
@@ -386,7 +483,8 @@ fun MusicrecApp(vm: RecViewModel = viewModel()) {
     BackHandler(enabled = screen != Screen.MAIN) { screen = Screen.MAIN }
     MaterialTheme(colorScheme = darkColorScheme()) {
         when (screen) {
-            Screen.MAIN -> MainScreen(vm, onSettings = { screen = Screen.SETTINGS }, onDebug = { screen = Screen.DEBUG })
+            Screen.MAIN -> MainScreen(vm, onSettings = { screen = Screen.SETTINGS }, onDebug = { screen = Screen.DEBUG }, onFriends = { screen = Screen.FRIENDS })
+            Screen.FRIENDS -> FriendsScreen(vm, onBack = { screen = Screen.MAIN })
             Screen.SETTINGS -> SettingsScreen(vm, onBack = { screen = Screen.MAIN })
             Screen.DEBUG -> DebugScreen(vm, onBack = { screen = Screen.MAIN })
         }
@@ -395,7 +493,7 @@ fun MusicrecApp(vm: RecViewModel = viewModel()) {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-private fun MainScreen(vm: RecViewModel, onSettings: () -> Unit, onDebug: () -> Unit) {
+private fun MainScreen(vm: RecViewModel, onSettings: () -> Unit, onDebug: () -> Unit, onFriends: () -> Unit) {
     val ctx = LocalContext.current
     val rec = vm.rec
     var fixOpen by remember { mutableStateOf(false) }
@@ -404,6 +502,7 @@ private fun MainScreen(vm: RecViewModel, onSettings: () -> Unit, onDebug: () -> 
             TopAppBar(
                 title = { Text("Music Finder") },
                 actions = {
+                    TextButton(onClick = onFriends, enabled = !vm.useRemote) { Text("Friends") }
                     TextButton(onClick = onDebug) { Text("Debug") }
                     TextButton(onClick = onSettings) { Text("Settings") }
                 },
@@ -427,9 +526,18 @@ private fun MainScreen(vm: RecViewModel, onSettings: () -> Unit, onDebug: () -> 
                         else -> {
                             Text(rec.title, style = MaterialTheme.typography.headlineSmall)
                             Text(rec.artist, color = MaterialTheme.colorScheme.primary)
-                            Text("[${rec.lane}] conf=${"%.3f".format(rec.confidence)} · ${if (rec.ytmHandoff == "watch") "exact video" else "YTM search"}")
+                            // Match label (not a %) until there are ≥ 50 ratings; then p(like).
+                            val label = rec.matchLabel.ifEmpty { "conf ${"%.2f".format(rec.confidence)}" }
+                            Text("[${rec.laneLabel.ifEmpty { rec.lane }}] $label · ${if (rec.ytmHandoff == "watch") "exact video" else "YTM search"}")
                             if (rec.tags.isNotEmpty()) Text(rec.tags.take(8).joinToString(" · "), style = MaterialTheme.typography.bodySmall)
-                            if (vm.whyOpen) Text(rec.why, style = MaterialTheme.typography.bodyMedium)
+                            if (vm.whyOpen) {
+                                Text(rec.why, style = MaterialTheme.typography.bodyMedium)
+                                Text(
+                                    "affinity ${"%.3f".format(rec.affinity)} · selection ${"%.3f".format(rec.selection)} · p(like) ${"%.2f".format(rec.confidence)}" +
+                                        if (rec.slot.isNotEmpty()) " · ${rec.slot}" else "",
+                                    style = MaterialTheme.typography.bodySmall,
+                                )
+                            }
                         }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -440,6 +548,13 @@ private fun MainScreen(vm: RecViewModel, onSettings: () -> Unit, onDebug: () -> 
                     if (vm.undoDepth > 0) {
                         TextButton(onClick = { vm.undo() }, enabled = !vm.busy) {
                             Text(if (vm.undoDepth > 1) "Undo last rating (${vm.undoDepth})" else "Undo last rating")
+                        }
+                    }
+                    vm.freshExhausted?.let { msg ->
+                        Text(msg, style = MaterialTheme.typography.bodyMedium)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            if (!vm.freshExpand90) Button(onClick = { vm.expandFreshAndRetry() }, enabled = !vm.busy) { Text("Expand to 90 days") }
+                            TextButton(onClick = { vm.freshExhausted = null; vm.applyLane("auto"); vm.loadNext() }) { Text("Back to auto") }
                         }
                     }
                     if (!vm.engineReachable || rec == null) {
@@ -538,7 +653,7 @@ private fun SettingsScreen(vm: RecViewModel, onBack: () -> Unit) {
 
             Text("Fresh lane", style = MaterialTheme.typography.titleMedium)
             Text(
-                "Minimum confidence for new releases: ${"%.2f".format(vm.freshMinConfidence)}. Below this, the card comes from the proven lane instead.",
+                "Minimum confidence for new releases: ${"%.2f".format(vm.freshMinConfidence)}. Below this a fresh track is not offered (auto serves proven; Fresh mode reports when it runs out).",
                 style = MaterialTheme.typography.bodySmall,
             )
             Slider(
@@ -548,6 +663,36 @@ private fun SettingsScreen(vm: RecViewModel, onBack: () -> Unit) {
                 steps = 7,
                 enabled = !vm.useRemote,
             )
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text("Widen fresh window to 90 days")
+                    Text("Only when you want more: cards from the wider window are labeled “fresh (90-day)”.", style = MaterialTheme.typography.bodySmall)
+                }
+                Switch(checked = vm.freshExpand90, onCheckedChange = { vm.setExpand90(it) }, enabled = !vm.useRemote)
+            }
+
+            Text("Discovery sources", style = MaterialTheme.typography.titleMedium)
+            Text(
+                "Refill pulls new candidates on the phone: Last.fm similar tracks / artist top tracks (needs your own free Last.fm API key) and " +
+                    "MusicBrainz new recordings by artists you like. One polite rate-limited queue with a daily budget and back-off. " +
+                    "No Google account is used for discovery.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            var keyInput by remember { mutableStateOf(vm.lastfmKey) }
+            OutlinedTextField(
+                value = keyInput,
+                onValueChange = { keyInput = it },
+                label = { Text("Last.fm API key (optional)") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                enabled = !vm.useRemote,
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Button(onClick = { vm.saveLastfmKey(keyInput) }, enabled = !vm.useRemote && keyInput.trim() != vm.lastfmKey) { Text("Save key") }
+                Button(onClick = { vm.refill() }, enabled = !vm.useRemote && !vm.busy) { Text("Refill candidates now") }
+            }
+            if (vm.lastfmKey.isBlank()) Text("No Last.fm key: Last.fm sources are skipped (MusicBrainz still runs).", style = MaterialTheme.typography.bodySmall)
 
             Text("Data", style = MaterialTheme.typography.titleMedium)
             Text(
@@ -574,6 +719,7 @@ private fun DebugScreen(vm: RecViewModel, onBack: () -> Unit) {
     LaunchedEffect(Unit) {
         DebugLog.listener = { tick++ }
         vm.refreshEngineInfo()
+        if (!vm.useRemote) vm.refreshFunnel()
     }
     val entries = remember(tick, errorsOnly) {
         DebugLog.snapshot().let { l -> if (errorsOnly) l.filter { it.kind == DebugLog.Kind.ERROR } else l }.asReversed()
@@ -593,6 +739,10 @@ private fun DebugScreen(vm: RecViewModel, onBack: () -> Unit) {
                 TextButton(onClick = { DebugLog.clear(); tick++ }) { Text("Clear") }
             }
             SelectionContainer { Text(vm.engineInfo, fontFamily = FontFamily.Monospace, fontSize = 11.sp) }
+            if (vm.funnelInfo.isNotEmpty()) {
+                Text("Candidate funnel", style = MaterialTheme.typography.titleMedium)
+                SelectionContainer { Text(vm.funnelInfo, fontFamily = FontFamily.Monospace, fontSize = 11.sp) }
+            }
             Text("Recent (${entries.size})", style = MaterialTheme.typography.titleMedium)
             entries.take(300).forEach { e ->
                 Text(
@@ -601,6 +751,56 @@ private fun DebugScreen(vm: RecViewModel, onBack: () -> Unit) {
                     fontSize = 11.sp,
                     color = if (e.kind == DebugLog.Kind.ERROR) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onBackground,
                 )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+private fun FriendsScreen(vm: RecViewModel, onBack: () -> Unit) {
+    val ctx = LocalContext.current
+    var tab by remember { mutableIntStateOf(0) }
+    LaunchedEffect(Unit) { vm.loadFriends() }
+    Scaffold(topBar = { TopAppBar(title = { Text("Friends mode") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } }) }) { pad ->
+        Column(
+            Modifier.padding(pad).padding(16.dp).verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                "Separate profiles: group reactions only teach the group profile; your own friends-context ratings stay separate. " +
+                    "Nothing transfers to your personal recs unless you tap “Also teach my recs”.",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(selected = tab == 0, onClick = { tab = 0 }, label = { Text("Play for friends") })
+                FilterChip(selected = tab == 1, onClick = { tab = 1 }, label = { Text("Audition") })
+                TextButton(onClick = { vm.loadFriends() }) { Text("Refresh") }
+            }
+            Text(vm.friendsStatus, style = MaterialTheme.typography.bodySmall)
+            val cards = if (tab == 0) vm.friendsQueue else vm.friendsAudition
+            if (tab == 1) Text("Audition: unrated candidates ranked by broad appeal and the group's reactions.", style = MaterialTheme.typography.bodySmall)
+            cards.forEach { card ->
+                Card(Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(card.rec.title, style = MaterialTheme.typography.titleMedium)
+                        Text(card.rec.artist, color = MaterialTheme.colorScheme.primary)
+                        Text(card.rec.why, style = MaterialTheme.typography.bodySmall)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Button(onClick = { YtmHandoff.open(ctx, card.rec) }) { Text("Play") }
+                            TextButton(onClick = { vm.groupReact(card, "liked") }) { Text("Group: Liked") }
+                            TextButton(onClick = { vm.groupReact(card, "didnt_work") }) { Text("Didn't work") }
+                            TextButton(onClick = { vm.groupReact(card, "mixed") }) { Text("Mixed") }
+                        }
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("Me here:", style = MaterialTheme.typography.bodySmall, modifier = Modifier.align(Alignment.CenterVertically))
+                            listOf("love", "like", "meh", "dislike").forEach { r ->
+                                TextButton(onClick = { vm.friendsContextRate(card, r) }) { Text(r.replaceFirstChar { it.uppercase() }) }
+                            }
+                            TextButton(onClick = { vm.teachPersonal(card, "like") }) { Text("Also teach my recs (Like)") }
+                        }
+                    }
+                }
             }
         }
     }

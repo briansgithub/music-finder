@@ -73,6 +73,7 @@ def select_proven(
 ) -> tuple[list[Candidate], dict]:
     scored = []
     filter_rejects = 0
+    weak = 0
     for c in cands:
         stored = get_metrics(conn, c.key())
         base_m = ((stored or {}).get("metrics") or {})
@@ -94,8 +95,10 @@ def select_proven(
         )
         if strong and c.confidence >= config.PROVEN_MIN_CONFIDENCE * 0.85:
             scored.append(c)
+        else:
+            weak += 1
     scored.sort(key=lambda x: (x.score, x.confidence), reverse=True)
-    return scored, {"filter_rejects": filter_rejects, "scored": len(scored)}
+    return scored, {"filter_rejects": filter_rejects, "weak_or_low_confidence_rejects": weak, "scored": len(scored)}
 
 
 def select_fresh(
@@ -109,13 +112,17 @@ def select_fresh(
     dials=None,
     calib=None,
     min_confidence: float | None = None,
+    days: int | None = None,
 ) -> tuple[list[Candidate], dict]:
+    fresh_days = config.FRESH_DAYS if days is None else int(days)
+    too_old = 0
+    weak = 0
     min_conf = config.FRESH_MIN_CONFIDENCE if min_confidence is None else float(min_confidence)
     low_conf = 0
     scored = []
     filter_rejects = 0
     reissue_rejects = 0
-    cutoff = date.today() - timedelta(days=config.FRESH_DAYS)
+    cutoff = date.today() - timedelta(days=fresh_days)
     mb = None
     enriched = 0
     for c in cands:
@@ -138,7 +145,7 @@ def select_fresh(
         if is_reissue_or_old(
             title=c.title, album=c.album, release_date=c.release_date,
             original_date=c.external_ids.get("original_date"),
-            fresh_days=config.FRESH_DAYS,
+            fresh_days=fresh_days,
         ):
             reissue_rejects += 1
             continue
@@ -146,6 +153,7 @@ def select_fresh(
             try:
                 rd = datetime.strptime(c.release_date[:10], "%Y-%m-%d").date()
                 if rd < cutoff:
+                    too_old += 1
                     continue
             except ValueError:
                 pass
@@ -162,6 +170,7 @@ def select_fresh(
             adventurous=adventurous, genre=genre, dials=dials, calib=calib, metrics=metrics,
         )
         if c.source_signals.get("artist_overlap", 0) < 0.15 and c.source_signals.get("freshness", 0) < 0.5:
+            weak += 1
             continue
         if c.confidence < min_conf:
             low_conf += 1
@@ -169,4 +178,5 @@ def select_fresh(
         scored.append(c)
     scored.sort(key=lambda x: (x.score, x.confidence), reverse=True)
     return scored, {"filter_rejects": filter_rejects, "reissue_rejects": reissue_rejects,
+                    "too_old_rejects": too_old, "weak_overlap_rejects": weak,
                     "low_confidence_rejects": low_conf, "min_confidence": min_conf, "scored": len(scored)}

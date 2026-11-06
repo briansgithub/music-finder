@@ -219,6 +219,75 @@ def main() -> int:
     out["artist_penalty_cases"] = pen_cases
     out["fresh_min_confidence"] = config.FRESH_MIN_CONFIDENCE
 
+    # --- batch 2: affinity / diversity / broad appeal ---
+    from musicrec.engine import affinity as aff, diversity as div, friends as fr
+    seed_counts: dict[str, int] = {}
+    for sd in bundle["seeds"]:
+        if sd.get("holdout") or not sd.get("artist") or sd["artist"] == "Unknown":
+            continue
+        seed_counts[sd["artist"]] = seed_counts.get(sd["artist"], 0) + 1
+    pc = bundle["candidates"]["proven"]
+    fc = bundle["candidates"]["fresh"]
+    def jf(d, tags=None):
+        return aff.features(d["artist"], d.get("tags", []) if tags is None else tags, d.get("cluster", ""), None)
+    jseq = [
+        (pc[0], "love"), (pc[1], "like"), (pc[2], "meh"), (pc[3], "dislike"), (pc[4], "skip"),
+        (pc[1], "dislike"),  # re-judged: only the latest counts
+        (fc[0], "like"), (pc[6], "love"), (pc[7], "like"), (pc[8], "meh"),
+        ({"artist": pc[0]["artist"], "title": "Other Song", "tags": ["synthwave", "Pop"], "cluster": "electronic"}, "love"),
+        (pc[9], "not_now"),  # not a judgment
+    ]
+    jrows = [aff.Judgment(normalize_key(d["artist"], d["title"]), r, jf(d)) for d, r in jseq]
+    active = aff.active_judgments(jrows)
+    st = aff.stats(active)
+    pool_all = [cand_from(d) for d in pc + fc]
+    model = aff.Model(st, aff.seed_profile(seed_counts), aff.idf(pool_all), len(active))
+    p = [cand_from(d) for d in pc]
+    f = [cand_from(d) for d in fc]
+    p, _ = apply_candidate_quality_filters(p, session=None, enabled_genres=None)
+    f, _ = apply_candidate_quality_filters(f, session=None, enabled_genres=None)
+    sp, _ = lanes.select_proven(conn, p, w_proven, calib=None)
+    sf, _ = lanes.select_fresh(conn, f, w_fresh, calib=None)
+    rp = aff.rank(model, sp)
+    rf = aff.rank(model, sf)
+    def aout(c):
+        pt = aff.parts(model, c)
+        return {"key": c.key(), "affinity": c.affinity, "selection": c.selection,
+                "seed": pt.seed, "tags": pt.tags, "artist": pt.artist, "label": pt.label,
+                "label_text": aff.match_label(c.affinity, model.ratings_count, c.confidence, False)}
+    history: list = []
+    picks = []
+    cp, cf = list(rp), list(rf)
+    for _ in range(14):
+        lane_ch = div.choose_lane("auto", cp, cf, history)
+        if lane_ch is None:
+            break
+        pk = div.pick(cf if lane_ch == "fresh" else cp, history, st)
+        k = pk.cand.key()
+        cp = [c for c in cp if c.key() != k]
+        cf = [c for c in cf if c.key() != k]
+        history.append(div.served(pk.cand))
+        picks.append({"key": k, "lane": lane_ch, "slot": pk.slot, "mmr_penalty": pk.mmr_penalty, "relaxed": pk.relaxed})
+    out["batch2"] = {
+        "seed_counts": seed_counts,
+        "judgments": [{"key": j.key, "rating": j.rating, "features": j.features} for j in jrows],
+        "active": [j.key for j in active],
+        "stats_n": st.n, "stats_s": st.s, "judged": st.judged,
+        "family": {
+            "tag": st.family("tag", jf(pc[0])), "artist": st.family("artist", jf(pc[0])),
+            "artist_disliked": st.family("artist", jf(pc[3])),
+        },
+        "ranked_proven": [aout(c) for c in rp],
+        "ranked_fresh": [aout(c) for c in rf],
+        "picks": picks,
+        "fresh_lane_exhausted": div.choose_lane("fresh", rp, [], []),
+        "broad_appeal": [
+            {"t": t, "a": a_, "tags": tg, "result": fr.appeal(t, a_, tg, [10.0, 100.0, 1000.0, 1e4, 1e5], [1e3, 1e5, 1e6, 1e7])}
+            for t, a_, tg in [(None, None, []), (1e4, 1e6, ["pop"]), (5e5, 2e7, ["pop", "dance"]), (50.0, None, ["ambient", "metal"]),
+                              (1000.0, 1e5, ["unknown-tag"])]
+        ],
+    }
+
     # --- dials ---
     m = build_metric_dict({"energy": 0.4, "tempo_bpm": 95.0, "freshness_days": 3.0})
     ds = DialSet(filters={"energy": (0.0, 0.5), "tempo_bpm": (60, 110), "freshness_days": (0, 7)},

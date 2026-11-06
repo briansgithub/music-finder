@@ -14,6 +14,8 @@ import kotlinx.serialization.json.jsonPrimitive
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
+import org.junit.Assert.assertNull
+import kotlinx.serialization.json.doubleOrNull
 import org.junit.Test
 import java.io.File
 import java.time.LocalDate
@@ -257,6 +259,75 @@ class ParityTest {
             n++
         }
         assertEquals(3, n)
+    }
+
+    // ---- batch 2 ----
+    @Test fun batch2_affinityRankingPicksBroadAppeal_matchPython() {
+        val b = fx["batch2"]!!.obj()
+        val store = freshStore()
+        assertEquals("seed counts", b["seed_counts"]!!.obj().mapValues { it.value.d().toInt() }, store.seedArtistCounts())
+        val rows = b["judgments"]!!.jsonArray.map { it.obj() }.map { o ->
+            Affinity.Judgment(o["key"]!!.s(), o["rating"]!!.s(), o["features"]!!.jsonArray.map { it.s() })
+        }
+        // features computed by Kotlin must match the Python ones for the same cards
+        val pc = store.candidates("proven")
+        assertEquals(rows[0].features, Affinity.features(pc.first { it.key() == rows[0].key }))
+        val active = Affinity.activeJudgments(rows)
+        assertEquals(b["active"]!!.jsonArray.map { it.s() }, active.map { it.key })
+        val st = Affinity.stats(active)
+        assertEquals(b["judged"]!!.d().toInt(), st.judged)
+        assertEquals(b["stats_n"]!!.obj().mapValues { it.value.d() }, st.n)
+        b["stats_s"]!!.obj().forEach { (k, v) -> near(v.d(), st.s[k]!!, "S[$k]") }
+        val fam = b["family"]!!.obj()
+        val f0 = rows[0].features
+        near(fam["tag"]!!.d(), st.family("tag", f0), "family tag")
+        near(fam["artist"]!!.d(), st.family("artist", f0), "family artist")
+        near(fam["artist_disliked"]!!.d(), st.family("artist", rows[3].features), "family artist disliked")
+
+        val all = store.candidates("proven") + store.candidates("fresh")
+        val model = Affinity.Model(st, Affinity.seedProfile(store.seedArtistCounts()), Affinity.idf(all), active.size)
+        val qp = CandidateQuality.apply(store.candidates("proven"), null, null)
+        val qf = CandidateQuality.apply(store.candidates("fresh"), null, null)
+        val (sp, _) = Lanes.selectProven(store, qp.kept, weights("proven_other"), calib = null, today = today)
+        val (sf, _) = Lanes.selectFresh(store, qf.kept, weights("fresh_other"), calib = null, today = today)
+        val rp = Affinity.rank(model, sp)
+        val rf = Affinity.rank(model, sf)
+        for ((name, got) in listOf("ranked_proven" to rp, "ranked_fresh" to rf)) {
+            val exp = b[name]!!.jsonArray.map { it.obj() }
+            assertEquals("$name order", exp.map { it["key"]!!.s() }, got.map { it.key() })
+            exp.zip(got).forEachIndexed { i, (e, c) ->
+                val pt = Affinity.parts(model, c)
+                near(e["affinity"]!!.d(), c.affinity, "$name[$i] Z")
+                near(e["selection"]!!.d(), c.selection, "$name[$i] selection")
+                near(e["seed"]!!.d(), pt.seed, "$name[$i] seed")
+                near(e["tags"]!!.d(), pt.tags, "$name[$i] tags")
+                near(e["artist"]!!.d(), pt.artist, "$name[$i] artist")
+                assertEquals("$name[$i] label", e["label_text"]!!.s(), Affinity.matchLabel(c.affinity, model.ratingsCount, c.confidence, false))
+            }
+        }
+        val history = ArrayList<Diversity.Served>()
+        var cp = rp
+        var cf = rf
+        for ((i, e) in b["picks"]!!.jsonArray.map { it.obj() }.withIndex()) {
+            val lane = Diversity.chooseLane("auto", cp, cf, history)
+            assertEquals("pick $i lane", e["lane"]!!.s(), lane)
+            val pk = Diversity.pick(if (lane == "fresh") cf else cp, history, st)!!
+            assertEquals("pick $i key", e["key"]!!.s(), pk.cand.key())
+            assertEquals("pick $i slot", e["slot"]!!.s(), pk.slot)
+            near(e["mmr_penalty"]!!.d(), pk.mmrPenalty, "pick $i mmr")
+            assertEquals("pick $i relaxed", e["relaxed"]!!.jsonPrimitive.boolean, pk.relaxed)
+            val k = pk.cand.key()
+            cp = cp.filter { it.key() != k }
+            cf = cf.filter { it.key() != k }
+            history += Diversity.served(pk.cand)
+        }
+        assertNull(Diversity.chooseLane("fresh", rp, emptyList(), emptyList()))
+        for (e in b["broad_appeal"]!!.jsonArray.map { it.obj() }) {
+            val t = e["t"]!!.jsonPrimitive.doubleOrNull
+            val a = e["a"]!!.jsonPrimitive.doubleOrNull
+            val tags = e["tags"]!!.jsonArray.map { it.s() }
+            near(e["result"]!!.d(), BroadAppeal.appeal(t, a, tags, listOf(10.0, 100.0, 1000.0, 1e4, 1e5), listOf(1e3, 1e5, 1e6, 1e7)), "B $t $a $tags")
+        }
     }
 
     @Test fun seedImport_keepsEveryCleanedCandidate() {

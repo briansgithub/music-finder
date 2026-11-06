@@ -10,8 +10,8 @@ android {
         applicationId = "com.brian.musicrec"
         minSdk = 26          // Pixel-era; covers Pixel 1+
         targetSdk = 35
-        versionCode = 3
-        versionName = "0.4.0"
+        versionCode = 4
+        versionName = "0.5.0"
         vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {

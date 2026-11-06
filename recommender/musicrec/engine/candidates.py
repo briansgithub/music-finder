@@ -167,6 +167,9 @@ class CandidateGenerator:
             cands.extend(self.deezer.fresh_releases(days=days, limit=limit))
         if self.status.get("musicbrainz", True):
             cands.extend(self.mb.fresh_releases(days=days, limit=min(10, limit)))
+            # Batch 2: new recordings by liked (seed) artists via recording firstreleasedate.
+            for artist in seed_artists[:8]:
+                cands.extend(self.mb.artist_recent_recordings(artist, days=max(days, config.FRESH_DAYS)))
         if self.status.get("bandcamp", True):
             try:
                 cands.extend(self.bandcamp.fresh_releases(days=days, limit=min(15, limit)))

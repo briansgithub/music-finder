@@ -154,3 +154,23 @@ The Dislike button sits next to Love / Like / Meh.
 - **Session:** like meh/skip, Dislike suppresses the artist's live/cover variants for the session.
 - **Undo:** Dislike is undoable; the artist row is restored exactly.
 - **Export/import:** Dislike is exported and imported, and importing replays the artist down-weight. The PC `/rate` accepts `dislike`.
+
+
+## Batch 2 (0.5.0, engine 1.3.0, model `affinity-1`)
+
+| Piece | Android (`core/.../engine`) | PC (`musicrec/engine`) |
+|---|---|---|
+| Affinity (shrinkage stats, Z, selection, match label) | `Affinity.kt` | `affinity.py` |
+| Lane choice (25 % fresh cap, 0.15 gap, exhaustion), MMR, exploration slot | `Diversity.kt` | `diversity.py` |
+| Funnel | `LocalEngine.funnelReport()` | `GET /funnel` |
+| Refill (Last.fm + MusicBrainz), RequestQueue | `Supply.kt` (device only) | — (PC uses its own sources; MB `artist_recent_recordings`) |
+| Friends mode (B, queue, audition, profiles, reactions) | `Supply.kt` `BroadAppeal`, `LocalEngine.friends*` | `friends.py`, `/friends/*` |
+
+- **Judged-track features** are saved when you rate: Android meta `feat:<key>`, PC cache `feat:<key>`. They fall back to artist + cluster.
+- **Seed profile:** non-holdout seed count per artist. The PC uses the same clauses as `seed_artists`.
+- **Parity:** the fixture section `batch2` covers seed counts, active judgments, N/S, families, the ranked pools (Z, selection, parts, label), 14 auto picks (lane, key, slot, MMR penalty) and broad appeal. `ParityTest.batch2_affinityRankingPicksBroadAppeal_matchPython` checks it.
+- **Profiles:**
+  - personal = the ratings table;
+  - `personal_friends_context` and `audience:group` = `feedback_events` rows of type `profile_judgment`, with a JSON detail.
+  - Undo deletes the row.
+- **Fresh exhaustion:** `next(lane=fresh)` returns null (PC: 404 `fresh_exhausted`) together with `lastExhaustion` {fresh_days, can_expand, funnel}. The 90-day window comes from `freshExpandDays=90` (PC `POST /fresh_expand`).

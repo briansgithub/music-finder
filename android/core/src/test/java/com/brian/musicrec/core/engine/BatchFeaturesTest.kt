@@ -57,8 +57,12 @@ class BatchFeaturesTest {
     @Test fun freshLane_requiresMinConfidence_elseFallsBackToProven() {
         val e = engine()
         e.freshMinConfidence = 0.99
-        val r = e.next("fresh")!!
-        assertEquals("proven", r.lane)
+        // Batch 2: explicit fresh mode reports exhaustion instead of silently serving proven…
+        assertNull(e.next("fresh"))
+        assertEquals("fresh", e.lastExhaustion!!["lane"])
+        assertEquals(true, e.lastExhaustion!!["can_expand"])
+        // …while auto falls back to proven.
+        assertEquals("proven", e.next()!!.lane)
         @Suppress("UNCHECKED_CAST")
         val fs = e.lastFilterStats["fresh"] as Map<String, Int>
         assertEquals(0, fs["scored"])

@@ -47,6 +47,17 @@ data class ResolveRow(
     val updatedAt: Double,
 )
 
+data class FeedbackRow(
+    val id: Long,
+    val key: String,
+    val event: String,
+    val artist: String,
+    val title: String,
+    val detail: String,
+    val lane: String,
+    val createdAt: Double,
+)
+
 data class SeedRow(
     val artist: String,
     val title: String,
@@ -67,6 +78,12 @@ interface EngineStore {
     // seeds / blocklist
     /** `db.seed_artists`: strong, non-holdout seed artists ordered by seed count desc. */
     fun seedArtists(): List<String>
+    /** Non-holdout seed count per artist (seed-similarity profile). */
+    fun seedArtistCounts(): Map<String, Int>
+    /** All meta rows whose key starts with [prefix] (e.g. Last.fm listener counts). */
+    fun metaWithPrefix(prefix: String): Map<String, String>
+    /** Seeds from YouTube likes / liked lists (Friends-mode "Liked" playback candidates). */
+    fun likedSeeds(limit: Int = 2000): List<SeedRow>
     /** `originality.build_blocklist` keys: every seed + rated + already-recommended key. */
     fun blockedKeys(): Set<String>
     fun blockedVideoIds(): Set<String>
@@ -105,6 +122,8 @@ interface EngineStore {
     fun ratingExists(key: String, createdAt: Double): Boolean
     fun addFeedback(key: String, event: String, artist: String, title: String, detail: String, lane: String, createdAt: Double): Long
     fun deleteFeedback(id: Long)
+    /** Oldest → newest feedback rows of one event type. */
+    fun feedbackRows(event: String): List<FeedbackRow>
     fun logRecommendation(row: LogRow): Long
     fun deleteLog(id: Long)
     fun lastLog(key: String): LogRow?
@@ -130,6 +149,9 @@ interface EngineStore {
     fun meta(key: String): String?
     fun setMeta(key: String, value: String)
 }
+
+/** Seed sources that are the user's own likes (YouTube likes / LL liked list). */
+val LIKED_SEED_SOURCES = setOf("yt_liked", "ll_liked", "liked_ll", "yt_ll")
 
 /** Pure-JVM store for tests (and a fallback if SQLite cannot open). */
 class InMemoryEngineStore : EngineStore {
@@ -161,6 +183,25 @@ class InMemoryEngineStore : EngineStore {
             counts[s.artist] = (counts[s.artist] ?: 0) + 1
         }
         return counts.entries.sortedByDescending { it.value }.map { it.key }
+    }
+
+    override fun metaWithPrefix(prefix: String): Map<String, String> = metaMap.filterKeys { it.startsWith(prefix) }
+
+    override fun seedArtistCounts(): Map<String, Int> {
+        val counts = LinkedHashMap<String, Int>()
+        for (s in seeds) {
+            if (s.holdout || s.artist.isEmpty() || s.artist == "Unknown") continue
+            counts[s.artist] = (counts[s.artist] ?: 0) + 1
+        }
+        return counts
+    }
+
+    override fun likedSeeds(limit: Int): List<SeedRow> =
+        seeds.filter { it.source in LIKED_SEED_SOURCES && it.artist.isNotEmpty() && it.artist != "Unknown" }.take(limit)
+
+    override fun feedbackRows(event: String): List<FeedbackRow> = feedback.filter { it["event"] == event }.map {
+        FeedbackRow(it["id"] as Long, it["key"] as String, event, it["artist"] as String, it["title"] as String,
+            it["detail"] as String, it["lane"] as String, it["created_at"] as Double)
     }
 
     override fun blockedKeys(): Set<String> =

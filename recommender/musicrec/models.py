@@ -38,6 +38,8 @@ class Candidate:
     score: float = 0.0
     cluster: str = "other"
     metrics: dict[str, Any] = field(default_factory=dict)
+    affinity: float = 0.0   # batch 2: personal affinity Z
+    selection: float = 0.0  # batch 2: ranking score (Z + legacy term)
 
     def key(self) -> str:
         return normalize_key(self.artist, self.title)

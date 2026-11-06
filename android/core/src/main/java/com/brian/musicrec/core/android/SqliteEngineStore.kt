@@ -16,6 +16,8 @@ import com.brian.musicrec.core.engine.ResolveRow
 import com.brian.musicrec.core.engine.SeedRow
 import com.brian.musicrec.core.engine.TagRow
 import com.brian.musicrec.core.engine.WeightRow
+import com.brian.musicrec.core.engine.FeedbackRow
+import com.brian.musicrec.core.engine.LIKED_SEED_SOURCES
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 
@@ -227,6 +229,24 @@ class SqliteEngineStore(context: Context, name: String = "musicfinder_engine.db"
         })
 
     override fun deleteFeedback(id: Long) { db.delete("feedback_events", "id=?", arrayOf(id.toString())) }
+
+    override fun feedbackRows(event: String): List<FeedbackRow> = query(
+        "SELECT id, key, IFNULL(artist,''), IFNULL(title,''), IFNULL(detail,''), IFNULL(lane,''), created_at FROM feedback_events WHERE event=? ORDER BY id",
+        arrayOf(event),
+    ) { FeedbackRow(it.getLong(0), it.getString(1), event, it.getString(2), it.getString(3), it.getString(4), it.getString(5), it.getDouble(6)) }
+
+    override fun metaWithPrefix(prefix: String): Map<String, String> = query(
+        "SELECT k, v FROM meta WHERE substr(k, 1, ?)=?", arrayOf(prefix.length.toString(), prefix),
+    ) { it.getString(0) to it.getString(1) }.toMap()
+
+    override fun seedArtistCounts(): Map<String, Int> = query(
+        "SELECT artist, COUNT(*) c FROM seeds WHERE artist!='' AND artist!='Unknown' AND holdout=0 GROUP BY artist ORDER BY c DESC",
+    ) { it.getString(0) to it.getInt(1) }.toMap()
+
+    override fun likedSeeds(limit: Int): List<SeedRow> = query(
+        "SELECT artist, title, key, source, IFNULL(video_id,''), holdout FROM seeds WHERE source IN (${LIKED_SEED_SOURCES.joinToString(",") { "'$it'" }}) " +
+            "AND artist!='' AND artist!='Unknown' ORDER BY id LIMIT $limit",
+    ) { SeedRow(it.getString(0), it.getString(1), it.getString(2), it.getString(3), it.getString(4), it.getInt(5) != 0) }
 
     override fun logRecommendation(row: LogRow): Long =
         db.insert("recommendations_log", null, ContentValues().apply {

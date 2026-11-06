@@ -576,7 +576,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -645,7 +647,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -738,7 +742,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -823,7 +829,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -920,7 +928,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -989,7 +999,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1074,7 +1086,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1143,7 +1157,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1228,7 +1244,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1297,7 +1315,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1390,7 +1410,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1475,7 +1497,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1572,7 +1596,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1641,7 +1667,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1725,7 +1753,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1793,7 +1823,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1878,7 +1910,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -1947,7 +1981,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2040,7 +2076,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2125,7 +2163,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2222,7 +2262,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2291,7 +2333,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2376,7 +2420,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2445,7 +2491,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2532,7 +2580,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2603,7 +2653,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2698,7 +2750,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2785,7 +2839,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2884,7 +2940,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -2955,7 +3013,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -3042,7 +3102,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -3113,7 +3175,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -3195,7 +3259,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3267,7 +3333,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3357,7 +3425,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3445,7 +3515,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3542,7 +3614,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "soundtrack"
+    "cluster": "soundtrack",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3619,7 +3693,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "soundtrack"
+    "cluster": "soundtrack",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3710,7 +3786,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3783,7 +3861,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3872,7 +3952,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -3945,7 +4027,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4036,7 +4120,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4125,7 +4211,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4220,7 +4308,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4293,7 +4383,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4382,7 +4474,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4455,7 +4549,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4541,7 +4637,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4617,7 +4715,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4705,7 +4805,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4797,7 +4899,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4888,7 +4992,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -4951,7 +5057,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "fresh",
    "weights": "fresh_other",
@@ -5033,7 +5141,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -5101,7 +5211,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -5190,7 +5302,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -5270,7 +5384,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -5368,7 +5484,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -5470,7 +5588,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "lane": "proven",
    "weights": "proven_other",
@@ -28543,7 +28663,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "expected": {
     "key": "morgan wallen::been by now",
@@ -28608,7 +28730,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "expected": {
     "key": "tame impala::dracula",
@@ -28672,7 +28796,9 @@
     "confidence": 0.0,
     "why": "",
     "score": 0.0,
-    "cluster": "other"
+    "cluster": "other",
+    "affinity": 0.0,
+    "selection": 0.0
    },
    "expected": {
     "key": "3force::status quo",
@@ -28706,6 +28832,3965 @@
   }
  ],
  "fresh_min_confidence": 0.7,
+ "batch2": {
+  "seed_counts": {
+   "Adhesive Wombat": 3,
+   "Alizbar": 1,
+   "Amanda McBroom 奥户巴寿": 1,
+   "Andrew Gold": 1,
+   "ANIELLO": 1,
+   "Antoine Renard 奥户巴寿": 1,
+   "Aperture Science Psychoacoustics Laboratory": 1,
+   "Approaching Nirvana": 1,
+   "a_hisa": 2,
+   "Benny Smiles": 1,
+   "Big Giant Circles Disasterpeace": 1,
+   "Bonfeel Electro Band": 1,
+   "Bronn Journey": 1,
+   "Caravan Palace": 2,
+   "Carpenter Brut": 2,
+   "ConcernedApe": 1,
+   "Covox": 1,
+   "Craig Ferguson": 1,
+   "CrossGear": 1,
+   "Danny Baranowsky": 1,
+   "Darkman007": 1,
+   "DDRKirby(ISQ)": 4,
+   "Deep East Music": 2,
+   "Disasterpeace": 3,
+   "Disastertron": 1,
+   "DJ Striden": 1,
+   "Dubmood": 3,
+   "Dubmood Zabutom": 1,
+   "Dunderpatrullen": 1,
+   "Dxtliant Child": 1,
+   "Eminence Symphony Orchestra": 2,
+   "F-777": 1,
+   "Falcom Sound Team jdk": 1,
+   "FantomenK": 3,
+   "Flashygoodness": 2,
+   "Foxtail-Grass Studio": 1,
+   "Gaijin Games": 1,
+   "Gary Portnoy": 1,
+   "Geoplex": 1,
+   "Henry Homesweet!": 1,
+   "Henry Rowley Bishop": 1,
+   "Hilfilter": 2,
+   "Infected Mushroom": 2,
+   "Jason Paige": 1,
+   "Jay Eskar": 2,
+   "Jay Eskar Nova": 1,
+   "Jordi Rivera": 1,
+   "josss㌲氀": 1,
+   "Jusqu'à Grand-Père": 1,
+   "Kevin MacLeod": 1,
+   "Kirby's Dream Band": 1,
+   "Kitsune²": 2,
+   "Kn1ght": 1,
+   "Kubbi": 3,
+   "Laura Shigihara": 4,
+   "Lazerpunk!": 1,
+   "Le Matos": 2,
+   "Linkin Park": 2,
+   "Liu": 1,
+   "Lolo": 1,
+   "London Music Works": 3,
+   "LukHash": 15,
+   "M.O.O.N.": 1,
+   "Maaayo": 1,
+   "Martin O'Donnell": 1,
+   "Mega Drive": 2,
+   "melodysheep": 2,
+   "mimei": 1,
+   "Mitch Murder": 2,
+   "Moby": 1,
+   "Mr.T": 1,
+   "Muac": 1,
+   "Nightcore": 1,
+   "NIGHTkilla": 2,
+   "Old Boy OST": 1,
+   "Oldboy 올드보이": 1,
+   "Oliver Heldens Fox Stevenson Estelle Kanye West": 1,
+   "Operation Ivy": 1,
+   "Oranges&Lemons": 1,
+   "Orax": 1,
+   "ORESAMA": 1,
+   "ORIGA": 1,
+   "P!nk": 1,
+   "Paradise Lunch": 1,
+   "ParagonX9": 1,
+   "Paralyzed Veterans of America": 1,
+   "Pocket Dokuro": 2,
+   "Professor Kliq": 2,
+   "Psychic Type": 1,
+   "Random": 2,
+   "Revo": 1,
+   "Rez": 1,
+   "Rob D": 1,
+   "Rob Hubbard": 5,
+   "Rob Simonsen": 3,
+   "Ronald Jenkees": 3,
+   "Ryan Farish": 1,
+   "Savant": 1,
+   "Scattle": 1,
+   "Schtiffles": 2,
+   "Sean&Bobo": 1,
+   "SeikoP": 1,
+   "SharaX": 1,
+   "Shawn Wasabi": 1,
+   "SHK": 1,
+   "Simply Three": 1,
+   "Skotein": 1,
+   "Sonny Bass Chasner": 1,
+   "Soundroll": 1,
+   "Spookey Ruben": 1,
+   "StudioEIM": 5,
+   "Supermode": 2,
+   "The Daniel Caine Orchestra": 1,
+   "The J. Arthur Keenes Band": 1,
+   "The Living Tombstone": 3,
+   "The Living Tombstone Eurobeat Brony": 1,
+   "The St. Albans Rob Hubbard Fan Club": 2,
+   "Toby Fox": 8,
+   "Tom Reev Assix Jason Gewalt": 1,
+   "V.A.": 31,
+   "Various Artists": 2,
+   "Vitamin String Quartet": 3,
+   "Waterflame": 7,
+   "Wizet": 1,
+   "Yoann Turpin": 1,
+   "Yuukichan's Papa": 1,
+   "つじあやの": 1,
+   "イエロー・マジック・オーケストラ": 2,
+   "サカモト教授": 1,
+   "サントラ Tina 猪野阳子": 1,
+   "ヒゲドライバー": 1,
+   "上海アリス幻樂団": 1,
+   "並木学": 1,
+   "久石譲": 4,
+   "久石譲 奥户巴寿": 4,
+   "井上あずみ": 1,
+   "任天堂": 10,
+   "伊藤サチコ": 1,
+   "住友纪人": 1,
+   "光田康典": 1,
+   "八乙女葦菜": 1,
+   "几米": 1,
+   "加藤登紀子 奥户巴寿": 1,
+   "吉井和哉": 1,
+   "和田薫": 2,
+   "堀山俊彦": 1,
+   "増田俊郎": 4,
+   "増田順一": 14,
+   "大橋のぞみ 藤岡藤巻": 1,
+   "天門": 2,
+   "宮崎慎二": 6,
+   "小胡仙儿": 1,
+   "小高直樹": 2,
+   "山根ミチル": 6,
+   "山田靖子": 1,
+   "岩代太郎": 1,
+   "岩垂徳行": 3,
+   "岩崎宏美": 1,
+   "岩男潤子": 1,
+   "広橋真紀子": 1,
+   "志方あきこ": 3,
+   "戶高一生": 1,
+   "手嶌葵": 1,
+   "手嶌葵 夏木マリ": 1,
+   "新日本フィルハーモニー交響楽団": 1,
+   "景山将太": 1,
+   "朝倉紀行": 1,
+   "木村明美": 1,
+   "本名陽子": 1,
+   "杉森雅和": 2,
+   "松任谷由実": 1,
+   "松前真奈美 坂口由洋": 1,
+   "林有三": 1,
+   "武部聡志": 4,
+   "洪蓓蓓": 1,
+   "田部井辰雄 石井妥師": 1,
+   "睡莲": 1,
+   "細野晴臣 奥户巴寿": 1,
+   "荒井由実 奥户巴寿": 1,
+   "西浦智仁": 1,
+   "谷山浩子": 1,
+   "足立美奈子": 1,
+   "辻横由佳": 1,
+   "近藤浩治": 6,
+   "野見祐二": 1,
+   "間宮芳生": 1,
+   "Golden Leaves": 1,
+   "Jo Hisaishi": 1,
+   "Tally Hall": 14,
+   "Claudio Arrau, Alan G. Melville, William Mann, Frédéric Chopin": 1,
+   "Joe Hisaishi": 6,
+   "MASTER BOOT RECORD, Vittorio D'Amore": 2,
+   "Johnny Cash, Rick Rubin, John Carter Cash, Don Gibson": 1,
+   "OK Go, Dave Fridmann, Damian Kulash, Jr.": 1,
+   "Justin Hurwitz": 11,
+   "Dog Music, Robert John Silverman, Michael George Silverman": 5,
+   "Cults, Madeline Follin, Brian Oblivion, Shane Stoneback, Ben H. Allen III": 1,
+   "Debussy Consort": 32,
+   "Dash Berlin, ATB": 1,
+   "Toby Fox, Lena Raine, Marcy Nabors": 1,
+   "Dramatica": 1,
+   "Dog Music": 20,
+   "fantasy keys": 8,
+   "Alstroemeria Records, nomico, Haruka, ZUN": 1,
+   "Ed Sheeran, FRED, Johnny McDaid, Fred Gibson": 1,
+   "The London Philharmonic Orchestra": 3,
+   "Neil Diamond, Robbie Robertson": 1,
+   "Lukhash": 1,
+   "Adrian Berenguer": 3,
+   "Soundgarden, Michael Beinhorn, Chris Cornell": 1,
+   "Dan Avidan, Super Guitar Bros, Jim Roach": 1,
+   "Chromeo, David Macklovitch, Patrick Gemayel": 1,
+   "Dog Music, Michael George Silverman, Robert John Silverman": 2,
+   "John Wasson, Duke Ellington, Juan Tizol": 1,
+   "Arcade Player": 2,
+   "Theraphosidae, Masahiko Kimura, Motoaki Furukawa, Mariko Egawa": 1,
+   "The Cat and Owl, Harry F Chapin, Sandra Campbell Chapin": 1,
+   "Peter James, Robert Sherman, Richard Sherman": 1,
+   "Pianissimo Brothers, Oscar Hammerstein, Richard Rodgers": 1,
+   "Haken, Thomas MacLean, Diego Tejeida, Richard Henshall, Raymond Hearne, Charles Griffiths, Ross Jennings, Not Documented": 1,
+   "Johnny Cash, Earl Poole Ball": 1,
+   "Steve Earle, Tony Brown": 1,
+   "Bluey, Joff Bush, Jonathan Bush, Jasmine D'Arcy": 1,
+   "Jafet Meza": 2,
+   "LCD Soundsystem, James Murphy": 1,
+   "Castlevania Sound Team, Konami Kukeiha Club": 2,
+   "Nick Shoulders": 1,
+   "Johnny Cash, Rick Rubin, Steve Earle": 1,
+   "Aerosmith, Bruce Fairbairn, Steven Tyler, Joe Perry": 1,
+   "Santa Esmeralda": 1,
+   "Data, Benny Sings, David Guillon, Tim Berkestijn": 1,
+   "Heyday Highway": 1,
+   "Adrián Berenguer, Adrian Berenguer Pastor": 1,
+   "Jerry Reed, Deena Rose": 1,
+   "Michael Tai": 1,
+   "Krutikov Music": 1,
+   "Muse of Slander": 1,
+   "Mark 'TDK' Knight": 1,
+   "Pearl Jam, Stone Gossard, Eddie Vedder, Rick Parashar": 1,
+   "Franz Ferdinand, Prince House Rabbit, Todd Terje, Alex Kapranos, Nick McCarthy": 1,
+   "Olivia Rodrigo, Daniel Nigro, Amy Allen": 1,
+   "The Score, Eddie Anthony Ramirez Jr, Edan Chai Dover, Jennifer Decilveo": 1,
+   "Tim Simonec": 2,
+   "Jake Kaufman, Manami Matsumae": 1,
+   "Martin Garrix, Zedd, Martijn Garritsen, Oskar Rindborg, Emily Warren, Caroline Ailin, Anton Zaslavski": 1,
+   "Johnny Cash": 16,
+   "Petr Spatina": 1,
+   "Seycara Orchestral": 1,
+   "Rob Dougan": 1,
+   "Parov Stelar, James Deacon": 1,
+   "Perturbator": 3,
+   "Super Piano 64, GameChops, Unplugged": 1,
+   "John Mulaney": 1,
+   "J.K. Simmons": 3,
+   "Queen": 2,
+   "ImRuscelOfficial, Nico Mendoza, Linus Kühl": 1,
+   "Sheet Music Boss": 2,
+   "Patti Rudisill": 1,
+   "Paul Lipson, Lennie Moore, Tom Salta, Brian Trifon, Brian Lee White, Halo": 1,
+   "Purple Disco Machine, Chromeo, Tino Schmidt, Mauro Malavasi, Stefano Micheli, David Macklovitch, Patrick Gemayel": 1,
+   "K.Flay, Mike Elizondo, Kristine Flaherty": 1,
+   "The Highwaymen": 2,
+   "LOLO": 2,
+   "Johnny Cash, Jack Routh, J.R. Cash, Charlie Bragg": 1,
+   "Tom Lehrer": 1,
+   "Madison Beer": 2,
+   "Kermit, Rowlf, Paul Williams, Kenny Ascher": 1,
+   "OK Go": 11,
+   "Sam Carruthers": 1,
+   "Melbourne Symphony Orchestra, Nigel Westlake": 1,
+   "OK Go, Dave Fridmann, Damian Kulash, Jr., Timothy Nordwind": 1,
+   "Linkin Park, Chester Bennington, Don Gilmore, Brad Delson, Joe Hahn, Mike Shinoda, Rob Bourdon": 1,
+   "DPSM, Brandon Armstrong, Josh Kaufman, Patrick McHale, Justin Rubenstein": 1,
+   "Derek Paravicini": 1,
+   "Lullaby Legends": 1,
+   "Trevor Moore": 1,
+   "The Mariachis": 1,
+   "Samuel Kim": 1,
+   "Narcotango, Carlos Libedinsky, Mariano Castro, Fernando del Castillo, Marcelo Toth": 1,
+   "Qumu, Chad York, Darren Radtke, Mike Peacock": 1,
+   "Teddy Swims, Ammo, Julian Bunetta, Mikky Ekko, Joshua Coleman, Jaten Dimsdale, Marco “Infamous” Rodriguez": 1,
+   "Aaron Robinson": 1,
+   "Les Humphries Singers, Günter Geyer, Jack Martin, Jimmy Driftwood, Les Humphries": 1,
+   "Scotty Sire, Andrew Fitzpatrick": 1,
+   "Kevin MacLeod, Kevin The Monkey": 1,
+   "Missing heart": 1,
+   "Alexandre Desplat": 1,
+   "Ready Player Piano, Go Ichinose, Morikazu Aoki, Junichi Masuda, Hitomi Sato": 1,
+   "Saint Motel, A/J Jackson, Aaron Sharp, Dak Lerdamornpong, Greg Erwin, Joe Napolitano, Chondrak Lerdamornpong": 1,
+   "Justin Hurwitz, Nicholas Britell": 1,
+   "Daniel Lanois, Mark Howard": 1,
+   "Emile Pandolfi": 1,
+   "Halo, Martin O'Donnell, Michael Salvatori": 1,
+   "Carlos Libedinsky": 1,
+   "Pianovus": 1,
+   "Mort Garson": 1,
+   "FalKKonE, Shogo Sakai": 1,
+   "Evelyn Stein": 1,
+   "Scott Joplin": 5,
+   "Four Tops, Brian Holland, Lamont Dozier, Eddie Holland": 1,
+   "Jedi Rydar": 1,
+   "Vance Joy": 1,
+   "Franz Gordon, Franz Bengtsson": 1,
+   "Ed Sheeran, FRED, Johnny McDaid, Steve Mac, Kal Lavelle": 1,
+   "Yo-Yo Ma, Alison Krauss, Traditional, Grace Row": 1,
+   "Tom Brier": 1,
+   "Ruelle": 1,
+   "Johnny Cash, Cash": 1,
+   "Hilary Summers, Kemi Ominiyi, The R'SVP Voices": 1,
+   "A Perfect Circle, Maynard James Keenan, William Howerdel": 1,
+   "Ben Thornewill": 1,
+   "Jordan Critz": 1,
+   "Robin Schulz, Francesco Yates, JUNKX Music, Dennis Bierbrodt, Francisco Bautista, Guido Kramer, Jürgen Dohr, Nathan Perez, Ronald Bryant": 1,
+   "Joe Hisaishi, London Symphony Orchestra": 1,
+   "Electus": 1,
+   "Johnny Cash, Hank Williams Jr., Jack H. Clement, Jennifer Pierce": 1,
+   "Ensemble Vivant, Catherine Wilson, John Arpin": 1,
+   "Yuri Petrovski": 1,
+   "Johnny Cash, Merle Travis, Leon Rusk, Bob Johnston": 1,
+   "Joshua Rifkin, Scott Joplin": 1,
+   "The Marcus Hedges Trend Orchestra": 1,
+   "Johnny Cash, J.L. Landsdowne, Billy Sherrill": 1,
+   "Cho Young-Wuk": 1,
+   "Marvin Hamlisch": 2,
+   "Men Without Hats, Marc Durand, Ivan Doroschuk": 1,
+   "Maroon 5, Matt Wallace, Adam Levine, Jesse Carmichael, Ryan Dusick, James Valentine, Mickey Madden": 1,
+   "David Hasselhoff": 1,
+   "Alan Silvestri": 1,
+   "Jessica Curry": 2,
+   "Tegan and Sara, Greg Kurstin, Sara Quin, Tegan Quin": 1,
+   "Vitamin String Quartet, Blake Slatkin, Henry Russell Walter, Ilya Salmanzadeh, James John Napier, Kim Petras, Omer Fedi, Samuel Frederick Smith, James McMillen": 1,
+   "Dave Brubeck, Teo Macero & His Orchestra": 1,
+   "Eric Christian": 1,
+   "HOYO-MiX": 1,
+   "Parov Stelar": 1,
+   "Johnny Cash, A.P. Carter, Don Law, Frank Jones": 1,
+   "ImRuscelOfficial, Madalyn Music, Nico Mendoza, Linus Kühl": 1,
+   "Dierks Bentley, Brett Beavers, Deric Ruttan": 1,
+   "daigoro789": 2,
+   "Rick Wakeman, The Orion Strings, Guy Protheroe, English Chamber Choir, George Harrison": 1,
+   "Aindulmedir": 1,
+   "Still Summer": 2,
+   "Bon Jovi, Bruce Fairbairn, Richie Sambora, Desmond Child": 1,
+   "Castlevania Sound Team": 4,
+   "Joe Hisaishi Official": 6,
+   "Hilary Summers": 1,
+   "A Perfect Circle": 2,
+   "HYBE LABELS": 1,
+   "Michiru Yamane♡山根ミチル": 1,
+   "David Bennett Music Theory": 1,
+   "OK Go Sandbox": 1,
+   "Halo The Codex OST": 1,
+   "Joshua Rifkin": 1,
+   "MASTER BOOT RECORD": 1,
+   "Lethal Company Soundtrack": 1,
+   "Dan Avidan": 1,
+   "Superdrag": 1,
+   "Disturbed": 1,
+   "Isq": 1,
+   "Japanese Counters Song 1": 1,
+   "joit": 1,
+   "Kero Blaster": 1,
+   "Data": 1,
+   "Hot Chip": 1,
+   "LCD Soundsystem": 1,
+   "Super Piano 64": 1,
+   "DuoArtOrgan": 2,
+   "The Style 41 American Fotoplayer": 1,
+   "Alstroemeria Records": 1,
+   "London Philharmonic Orchestra": 3,
+   "Sugar Ray": 1,
+   "MC Lars": 1,
+   "Clair Obscur": 2,
+   "Billie Eilish": 1,
+   "Dua Lipa": 2,
+   "Ed Sheeran": 2,
+   "Lady Gaga, Bruno Mars": 1,
+   "The Newfangled Four": 2,
+   "Qumu": 1,
+   "Rymdreglage": 1,
+   "lftkryo": 4,
+   "Algar": 1,
+   "cheetahman91": 1,
+   "ChrisTune": 1,
+   "Halo 3": 1,
+   "George Gershwin": 1,
+   "tallyhall": 5,
+   "Dpsm": 1,
+   "Theraphosidae": 1,
+   "deadmau5 & Wolfgang Gartner": 1,
+   "Jake Kaufman": 1,
+   "Ready Player Piano": 1,
+   "messed_up": 1,
+   "Michael Chisholm": 1,
+   "Kermit": 1,
+   "Raul Di Blasio": 1,
+   "kasidid2": 1,
+   "COMMODORE C64 SID 2024": 1,
+   "Super Mario World": 2,
+   "Separate Ways": 1,
+   "Narcotango": 1,
+   "Mötley Crüe": 1,
+   "Haken": 1,
+   "Peter James": 1,
+   "Rito Village": 1,
+   "TriteHexagon": 1,
+   "Butternut Squash Guide": 1,
+   "Pleasure Castle (Twinkle Park)": 1,
+   "Rob Dougan Official": 1,
+   "Halo SPV3 Soundtrack": 1,
+   "Paul Lipson": 1,
+   "Halo": 1,
+   "Staff Roll ~ Credits \"\"\"Remix\"\"\"": 1,
+   "Pokemon Mystery Dungeon 2": 1,
+   "MUSE": 1,
+   "Battle with King Olly | Paper Mario": 1,
+   "NintenMusic - Video Game Covers": 1,
+   "Compliments to the Chef": 1,
+   "Amosdoll Music": 1,
+   "Franz Gordon": 2,
+   "RodBent": 1,
+   "Unstable Geometry": 1,
+   "Jerry Reed": 1,
+   "【Ado】I'm Invincible (Watashi wa Saikyou)": 1,
+   "Halo 3 OST": 1,
+   "\"Angry Birds\" but it's a three voice fugal invention! 🎹 🦉": 1,
+   "\"I'm a Barbie girl\" but it's a three voice fugue! 🎹 🎤": 1,
+   "After Confession": 1,
+   "Polyphia": 1,
+   "John Murphy": 1,
+   "ichikoro": 1,
+   "Alan Jackson": 2,
+   "Junji Ishiwatari": 1,
+   "Jazz Master Roll": 1,
+   "\"The Happy Godfather\"": 1,
+   "Daniel Escudero Valle": 1,
+   "Why Sight": 1,
+   "Yoshi's Island": 1,
+   "Claudio Arrau": 1,
+   "COMMODORE C64 STEREO SID": 1,
+   "c64gyro": 1,
+   "Flimbo's Quest Music": 2,
+   "CastleVania": 1,
+   "Gladiolus Rag": 1,
+   "Maroon 5, CupcakKe": 1,
+   "ふぃくしのん / phyxinon": 3,
+   "Frank LiVolsi": 2,
+   "Flintzell": 1,
+   "Super Mario 3D World": 1,
+   "Brothers": 1,
+   "【Deemo】ANiMA (FULL)": 1,
+   "Outer Wilds Original Soundtrack #05": 1,
+   "Outer Wilds Original Soundtrack #17": 1,
+   "miso35": 1,
+   "RetroSpecter": 1,
+   "Apocalyptica": 1,
+   "【TAIKO DRUM MASTER】Angel  Dream": 1,
+   "ANKI XO": 1,
+   "Angel Dream (エンジェルドリーム) Tatacon play 【Taiko no Tatsujin": 1,
+   "Angel Dream TATACON【Taiko no Tatsujin": 1,
+   "Suzumiya Haruhi OST": 1,
+   "NEW DANGANRONPA V3 OST": 1,
+   "\"Weird Al\" Yankovic": 1,
+   "Yo": 1,
+   "R3 Music Box": 5,
+   "YouCodeThings": 1,
+   "Luna Ascension": 1,
+   "Johnny  Cash": 1,
+   "COMMODORE C64 SID": 1,
+   "red55taiko": 1,
+   "Taylor Swift": 1,
+   "Dear Esther": 1,
+   "8-Bit Arcade": 1,
+   "Raxlen Slice Modern": 1,
+   "The Youngbloods": 1,
+   "SONIC": 1,
+   "Davie504": 1,
+   "GameChops": 1,
+   "Waylon Jennings": 1,
+   "That Random Chick": 1,
+   "Swing": 1,
+   "Steve Earle": 1,
+   "2CELLOS": 1,
+   "OC ReMix #2998": 1,
+   "Johnny Cash with Hank Williams Jr.": 1,
+   "How to Sit at the Piano": 1,
+   "SCOTTY SIRE": 1,
+   "3φmusic": 1,
+   "Mushishi OST 1": 2,
+   "Eclairattack": 1,
+   "Pianissimo Brothers": 1,
+   "Wicked Child": 1,
+   "Pitch Black Intrusion": 1,
+   "PSY": 1,
+   "Tegan and Sara": 1,
+   "Ghost in the Shell": 1,
+   "Symphony of Science": 1,
+   "KT Tunstall": 1,
+   "Haute & Freddy": 1,
+   "Todo Lo Fue": 1,
+   "R.E.M.": 1,
+   "Fools Garden": 1,
+   "Drang": 1,
+   "Main Theme": 1,
+   "Riptide": 1,
+   "Castlevania": 1,
+   "Videri String Quartet": 1,
+   "Mortal Kombat (2021) Theme": 1,
+   "Negative Harmony Cover": 1,
+   "Sunset Boulevard": 1,
+   "\"Sunset Boulevard\"": 1,
+   "Gottschalk": 1,
+   "The Legend of Zelda": 1,
+   "Prosecutor Godot": 1,
+   "Robo": 1,
+   "Super Mario": 1,
+   "Nobuyuki Tsujii 辻井伸行": 1,
+   "[16": 1,
+   "The Godfather": 1,
+   "NieR Gestalt & Replicant": 1,
+   "Maple Story": 1,
+   "Mary Poppins Rag": 1,
+   "PW": 1,
+   "Nobuyuki Tsujii": 1,
+   "NieR Gestalt": 1,
+   "🎹How to Play Fast Piano Scales": 1,
+   "Return Of The Obra Dinn": 1,
+   "God Bless the USA": 1,
+   "Classical Piano": 1,
+   "VeggieTales": 1,
+   "The Secret of Monkey Island": 1,
+   "SA Stage 6 Boss": 1,
+   "[Beat Saber] \"Weird Al\" Yankovic": 1,
+   "Natsumatsuri / Whiteberry": 1,
+   "\"Grace Kelly\"": 1,
+   "Bizet": 1,
+   "Memeshikute／Golden Bomber": 1,
+   "Watch": 1,
+   "Violin Tuner": 1,
+   "Inochi No Kioku": 1,
+   "The Late Late Show with Craig Ferguson Theme Song": 1,
+   "Animal Crossing": 1,
+   "Climb Every Mountain": 1,
+   "Chandelier": 1,
+   "AC": 1,
+   "The Matrix": 1,
+   "The Script": 1,
+   "UNDERTALE": 1,
+   "Mario Paint Composer": 1,
+   "Satori Maiden ~ 3rd eye": 1,
+   "Phoenix Wright": 2
+  },
+  "judgments": [
+   {
+    "key": "ok go::get over it",
+    "rating": "love",
+    "features": [
+     "artist:ok go"
+    ]
+   },
+   {
+    "key": "justin hurwitz::mia sebastians theme",
+    "rating": "like",
+    "features": [
+     "artist:justin hurwitz"
+    ]
+   },
+   {
+    "key": "justin hurwitz::epilogue",
+    "rating": "meh",
+    "features": [
+     "artist:justin hurwitz"
+    ]
+   },
+   {
+    "key": "justin hurwitz::the landing",
+    "rating": "dislike",
+    "features": [
+     "artist:justin hurwitz"
+    ]
+   },
+   {
+    "key": "justin hurwitz::planetarium",
+    "rating": "skip",
+    "features": [
+     "artist:justin hurwitz"
+    ]
+   },
+   {
+    "key": "justin hurwitz::mia sebastians theme",
+    "rating": "dislike",
+    "features": [
+     "artist:justin hurwitz"
+    ]
+   },
+   {
+    "key": "tame impala::dracula with jennie",
+    "rating": "like",
+    "features": [
+     "artist:tame impala"
+    ]
+   },
+   {
+    "key": "autodidactic studios::driftspin",
+    "rating": "love",
+    "features": [
+     "artist:autodidactic studios"
+    ]
+   },
+   {
+    "key": "waterflame::electroman adventures",
+    "rating": "like",
+    "features": [
+     "artist:waterflame"
+    ]
+   },
+   {
+    "key": "waterflame::glorious morning",
+    "rating": "meh",
+    "features": [
+     "artist:waterflame"
+    ]
+   },
+   {
+    "key": "ok go::other song",
+    "rating": "love",
+    "features": [
+     "artist:ok go",
+     "tag:synthwave",
+     "tag:pop",
+     "tag:electronic"
+    ]
+   },
+   {
+    "key": "daniel welch::astral observatory",
+    "rating": "not_now",
+    "features": [
+     "artist:daniel welch"
+    ]
+   }
+  ],
+  "active": [
+   "ok go::get over it",
+   "justin hurwitz::epilogue",
+   "justin hurwitz::the landing",
+   "justin hurwitz::planetarium",
+   "justin hurwitz::mia sebastians theme",
+   "tame impala::dracula with jennie",
+   "autodidactic studios::driftspin",
+   "waterflame::electroman adventures",
+   "waterflame::glorious morning",
+   "ok go::other song"
+  ],
+  "stats_n": {
+   "artist:ok go": 2.0,
+   "artist:justin hurwitz": 3.0,
+   "artist:tame impala": 1.0,
+   "artist:autodidactic studios": 1.0,
+   "artist:waterflame": 2.0,
+   "tag:synthwave": 1.0,
+   "tag:pop": 1.0,
+   "tag:electronic": 1.0
+  },
+  "stats_s": {
+   "artist:ok go": 2.0,
+   "artist:justin hurwitz": -2.25,
+   "artist:tame impala": 0.5,
+   "artist:autodidactic studios": 1.0,
+   "artist:waterflame": 0.25,
+   "tag:synthwave": 1.0,
+   "tag:pop": 1.0,
+   "tag:electronic": 1.0
+  },
+  "judged": 9,
+  "family": {
+   "tag": 0.0,
+   "artist": 0.2857142857142857,
+   "artist_disliked": -0.28125
+  },
+  "ranked_proven": [
+   {
+    "key": "ok go::get over it",
+    "affinity": 0.5928571428571429,
+    "selection": 0.6489154036817577,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.2857142857142857,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::synth one",
+    "affinity": 0.5777777777777778,
+    "selection": 0.6360512277451464,
+    "seed": 1.0,
+    "tags": 0.1111111111111111,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "waterflame::electroman adventures",
+    "affinity": 0.5553571428571429,
+    "selection": 0.6134356264641515,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.03571428571428571,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "waterflame::glorious morning",
+    "affinity": 0.5553571428571429,
+    "selection": 0.6134356264641515,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.03571428571428571,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob hubbard::the chicken song",
+    "affinity": 0.55,
+    "selection": 0.6084375525224348,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob hubbard::crazy comets main theme from crazy comets c64",
+    "affinity": 0.55,
+    "selection": 0.6084375525224348,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::night shade",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::jiggy",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::funky sundays",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::downforce",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::overdrive",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::ball point",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::anthem",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::osmium",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "adhesive wombat::symphony of a forgotten sprite",
+    "affinity": 0.55,
+    "selection": 0.6084221227789605,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::firelight",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::pathfinder",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::ember",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::cascade",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::restoration",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::overworld",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::compass",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::formed by glaciers",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::the cairn",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "kubbi::penguin zombie apocalypse",
+    "affinity": 0.55,
+    "selection": 0.6083789894677861,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::dance of the incognizant",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::crystal tokyo",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::tiny tunes",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::the sprites and you",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::det var han",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::follow me",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::audio avenue",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "fantomenk::jump up and bounce down",
+    "affinity": 0.55,
+    "selection": 0.6083667800442988,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::lfg theme from deadpool wolverine",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::night drive",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::gloria s theme",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::demain tout commence",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::walk in the trees",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::opening",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::adaline bowman",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "rob simonsen::duncan s theme",
+    "affinity": 0.55,
+    "selection": 0.6083571520452957,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "laura shigihara::loonboon",
+    "affinity": 0.55,
+    "selection": 0.6083481481097714,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "laura shigihara::brainiac maniac",
+    "affinity": 0.55,
+    "selection": 0.6083481481097714,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "laura shigihara::zombies on your lawn",
+    "affinity": 0.55,
+    "selection": 0.6083481481097714,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::stay crunchy",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::guitar sound",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::fifteen fifty",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::mindful",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::loui",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::inverted mean",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::wonder and flow",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "ronald jenkees::remix to a remix",
+    "affinity": 0.55,
+    "selection": 0.6082734499673687,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::knowledge",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::flow",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::sync",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::three",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::wagering lights",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::majesty",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::body drop",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "disasterpeace::jump error",
+    "affinity": 0.55,
+    "selection": 0.6082588472741444,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "perturbator::raining steel",
+    "affinity": 0.55,
+    "selection": 0.6067491332509174,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "perturbator::the new black",
+    "affinity": 0.55,
+    "selection": 0.6067491332509174,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "perturbator::deviance feat arcade high",
+    "affinity": 0.55,
+    "selection": 0.6067491332509174,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "perturbator::sentient feat hayley stewart",
+    "affinity": 0.55,
+    "selection": 0.6067491332509174,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "toby fox::flower man",
+    "affinity": 0.55,
+    "selection": 0.6048872447867409,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "justin hurwitz::mia sebastians theme",
+    "affinity": 0.5078125,
+    "selection": 0.565560686930335,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": -0.28125,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "justin hurwitz::epilogue",
+    "affinity": 0.5078125,
+    "selection": 0.565560686930335,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": -0.28125,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "justin hurwitz::the landing",
+    "affinity": 0.5078125,
+    "selection": 0.565560686930335,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": -0.28125,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "justin hurwitz::planetarium",
+    "affinity": 0.5078125,
+    "selection": 0.565560686930335,
+    "seed": 1.0,
+    "tags": 0.0,
+    "artist": -0.28125,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "dubmood::keygen 8",
+    "affinity": 0.41250000000000003,
+    "selection": 0.47083138772159455,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "dubmood::we have accidentally borrowed your votedisk",
+    "affinity": 0.41250000000000003,
+    "selection": 0.47083138772159455,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "dubmood::main theme richard theme main theme richard theme",
+    "affinity": 0.41250000000000003,
+    "selection": 0.47083138772159455,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "dubmood::the scene is dead master boot record remix",
+    "affinity": 0.41250000000000003,
+    "selection": 0.47083138772159455,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "joe hisaishi::opening song merry go round of life",
+    "affinity": 0.41250000000000003,
+    "selection": 0.46729682732060007,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "joe hisaishi::sheeta s decision",
+    "affinity": 0.41250000000000003,
+    "selection": 0.46729682732060007,
+    "seed": 0.75,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "deep east music::house arrest",
+    "affinity": 0.3944444444444445,
+    "selection": 0.4528734948314857,
+    "seed": 0.6666666666666666,
+    "tags": 0.1111111111111111,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "jay eskar::sins",
+    "affinity": 0.385,
+    "selection": 0.44344578180214683,
+    "seed": 0.7,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::fortune fields",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::luna ascension ex",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::howl of the forest",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::fun factory",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::main menu",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::fight and flight",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::beach bazaar",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::fight the current flashy mix",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "flashygoodness::oceanic breeze",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251057130420448,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::nite nite",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::cage of almeria",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::dysthymia",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::cheshire s dance",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::satellite feat tohoku kiritan",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::fermented dream",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::star prism",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::rainy waltz",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::leviathan",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "a hisa::leave it alone",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42510497970100386,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::laputa castle in the sky suite",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::my neighbour totoro suite",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::death note suite",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::tsubasa chronicles suite",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::the great legend laputa the castle in the sky",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "eminence symphony orchestra::secret garden howl s moving castle",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4251012856898884,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "deep east music::better than you",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4250957170537079,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "deep east music::baby grand sunshine",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4250957170537079,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "deep east music::open your heart",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4250957170537079,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "deep east music::a world beyond a girl",
+    "affinity": 0.3666666666666667,
+    "selection": 0.4250957170537079,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::ghost house",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::in the tiger s den",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::merp merp",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::grand finale",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::adventures of kiki the witch",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::marbl",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::ng",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "schtiffles::236",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42509441309841356,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::plastic and flashing lights",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::overhead",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::nothing stops detroit",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::teragraph",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::mouth money",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::jellyfish",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::wire flashing lights",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "professor kliq::starthropod",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42503714516693436,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::home",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::la mer des possibilites",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::eyes throat genitals",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::playtime is over",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::the stuff",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::montrose",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::no tomorrow",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::light again feat electric youth",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::singularity incarnate",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "le matos::end of summer",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42495400749484036,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::time paradox feat satellite young",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::sniper rouge feat emi",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::remember when",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::hurricane",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::terminal velocity",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::breeze",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::bayshore connect",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::after hours run",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::outpost alpha",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "mitch murder::principles of motion",
+    "affinity": 0.3666666666666667,
+    "selection": 0.424814863712724,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "the highwaymen::cotton fields",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42461171454953883,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "the highwaymen::red is the rose",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42461171454953883,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "the highwaymen::a place in the choir",
+    "affinity": 0.3666666666666667,
+    "selection": 0.42461171454953883,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::miracle",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::city cook",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::plume",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::black betty",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::dragons",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "caravan palace::jolie coquine",
+    "affinity": 0.3666666666666667,
+    "selection": 0.41651616008789366,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "linkin park::faint",
+    "affinity": 0.3666666666666667,
+    "selection": 0.404924850191113,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "linkin park::somewhere i belong",
+    "affinity": 0.3666666666666667,
+    "selection": 0.404924850191113,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "linkin park::one step closer",
+    "affinity": 0.3666666666666667,
+    "selection": 0.404924850191113,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "linkin park::bleed it out",
+    "affinity": 0.3666666666666667,
+    "selection": 0.404924850191113,
+    "seed": 0.6666666666666666,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "daigoro789::passacaille in barcelona from yuri on ice",
+    "affinity": 0.3055555555555556,
+    "selection": 0.36899680070883706,
+    "seed": 0.5555555555555556,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "daigoro789::daguerreo the hermit s library piano collections version from final fantasy ix for piano solo",
+    "affinity": 0.3055555555555556,
+    "selection": 0.36899680070883706,
+    "seed": 0.5555555555555556,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "daigoro789::200 am",
+    "affinity": 0.3055555555555556,
+    "selection": 0.36899680070883706,
+    "seed": 0.5555555555555556,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "daigoro789::korok forest from zelda breath of the wild for flute piano duet",
+    "affinity": 0.3055555555555556,
+    "selection": 0.36899680070883706,
+    "seed": 0.5555555555555556,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Strong match"
+   },
+   {
+    "key": "weird al yankovic::eat it",
+    "affinity": 0.24444444444444446,
+    "selection": 0.301136588872032,
+    "seed": 0.4444444444444444,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "the beatles::norwegian wood this bird has flown remastered 2009",
+    "affinity": 0.2581632653061225,
+    "selection": 0.30001163164914546,
+    "seed": 0.46938775510204084,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "satoshi takebe::summer of farewells from up on poppy hill vocals by aoi teshima",
+    "affinity": 0.21111111111111114,
+    "selection": 0.27461580131973085,
+    "seed": 0.3333333333333333,
+    "tags": 0.1111111111111111,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "satoshi takebe::summer of farewells from up on poppy hill inst",
+    "affinity": 0.21111111111111114,
+    "selection": 0.27461580131973085,
+    "seed": 0.3333333333333333,
+    "tags": 0.1111111111111111,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::astral observatory",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::great bay coast",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::clock tower",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::deku palace",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::clock town day 1",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::majora mask incarnation wrath final battle",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::milk bar",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "daniel welch::clock town day 2",
+    "affinity": 0.20625000000000002,
+    "selection": 0.269669551764188,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "kaythepianist::innocent",
+    "affinity": 0.18333333333333335,
+    "selection": 0.2468550524309782,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "kaythepianist::howl s moving castle theme",
+    "affinity": 0.18333333333333335,
+    "selection": 0.2468550524309782,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "satoshi takebe::reminiscence",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24683802354195306,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "satoshi takebe::the latin quarter",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24683802354195306,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "streaming music studios::always with me from spirited away piano version",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682783278647097,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "streaming music studios::chihiro s waltz from spirited away piano version",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682783278647097,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "streaming music studios::the name of life from spirited away piano version",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682783278647097,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "streaming music studios::5am from animal crossing new horizons piano version",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682783278647097,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "yuji nomi::starry night sky",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682431227768875,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "yuji nomi::waltz katzen blut",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682431227768875,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "yuji nomi::engelszimmer",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682431227768875,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "yuji nomi::take me home country roads theme song",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24682431227768875,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "grissini project::lilium from elfen lied",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24674203465688985,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "grissini project::davy jones s theme from pirates of the caribbean",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24674203465688985,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "grissini project::vogel im käfig from attack on titan original motion picture soundtrack",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24674203465688985,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "l orchestra cinematique::this is halloween from the nightmare before christmas",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646361105798667,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "l orchestra cinematique::twisted nerve from kill bill vol 1",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646361105798667,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "l orchestra cinematique::remains of the day from corpse bride",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646361105798667,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "l orchestra cinematique::cry little sister from the lost boys",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646361105798667,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "anime kei::howls moving castle theme originally from howl s moving castle instrumental",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646326374122982,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "anime kei::davy jones pirates of the caribbean dead man s chest",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646326374122982,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "anime kei::legend of ashitaka theme originally from princess mononoke instrumental",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646326374122982,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "anime kei::castle in the sky theme originally from castle in the sky instrumental",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24646326374122982,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "edgar moon::abandoned castle",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24175485839640543,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::dark darker yet darker undertronic remix",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::pandemic",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::simply silphy",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::ghost",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::i m blue feat sans papyrus cider chronos zephyr undertronic remix",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::wolf of night",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::field of hopes and dreams",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::defiance",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::down under",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "sharax::megalovania",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24156345463720832,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "dance with the dead::i want blood",
+    "affinity": 0.18333333333333335,
+    "selection": 0.24060118235094236,
+    "seed": 0.3333333333333333,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "led zeppelin::immigrant song remaster",
+    "affinity": 0.20625000000000002,
+    "selection": 0.23137641600873193,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "led zeppelin::black dog remaster",
+    "affinity": 0.20625000000000002,
+    "selection": 0.23137641600873193,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "led zeppelin::kashmir remaster",
+    "affinity": 0.20625000000000002,
+    "selection": 0.23137641600873193,
+    "seed": 0.375,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "resoforce::one thousand shards battle 3",
+    "affinity": 0.165,
+    "selection": 0.22343904637537815,
+    "seed": 0.3,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "autodidactic studios::driftspin",
+    "affinity": 0.1625,
+    "selection": 0.2205784836070086,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.16666666666666666,
+    "label": 0.0,
+    "label_text": "Good match"
+   },
+   {
+    "key": "shinji miyazaki::a day in the a",
+    "affinity": 0.1375,
+    "selection": 0.19594711249683683,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shinji miyazaki::light colored",
+    "affinity": 0.1375,
+    "selection": 0.19594711249683683,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shinji miyazaki::river",
+    "affinity": 0.1375,
+    "selection": 0.19594711249683683,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "studio eim::rabbits dream",
+    "affinity": 0.1375,
+    "selection": 0.19594637926079445,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "michiru yamane::requiem",
+    "affinity": 0.1375,
+    "selection": 0.1959215250630721,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "isidor::fahrenheit the crazy",
+    "affinity": 0.1375,
+    "selection": 0.19591399873442122,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "isidor::power fighter 3000",
+    "affinity": 0.1375,
+    "selection": 0.19591399873442122,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "zircon::colossus",
+    "affinity": 0.1375,
+    "selection": 0.19590921614081014,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "zircon::neurobazaar",
+    "affinity": 0.1375,
+    "selection": 0.19590921614081014,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "zircon::million years",
+    "affinity": 0.1375,
+    "selection": 0.19590921614081014,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "zircon::baroque virus",
+    "affinity": 0.1375,
+    "selection": 0.19590921614081014,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "big giant circles::the echo",
+    "affinity": 0.1375,
+    "selection": 0.19590883568981243,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "sabrepulse::termination shock",
+    "affinity": 0.1375,
+    "selection": 0.1958855689531053,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "sabrepulse::flux",
+    "affinity": 0.1375,
+    "selection": 0.1958855689531053,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "sabrepulse::twin chevron action flash remix",
+    "affinity": 0.1375,
+    "selection": 0.1958855689531053,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "sabrepulse::banish",
+    "affinity": 0.1375,
+    "selection": 0.1958855689531053,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "nightstop::streetwalker",
+    "affinity": 0.1375,
+    "selection": 0.19587594415714937,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "nightstop::drive by stalking",
+    "affinity": 0.1375,
+    "selection": 0.19587594415714937,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "nightstop::neoromancer",
+    "affinity": 0.1375,
+    "selection": 0.19587594415714937,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "mychael danna::a story of boy meets girl",
+    "affinity": 0.1375,
+    "selection": 0.1958571520452957,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "idles::flushing queens",
+    "affinity": 0.1375,
+    "selection": 0.1958571520452957,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "canon pachelbel::schumann album for the young opus 68 knecht reprecht",
+    "affinity": 0.1375,
+    "selection": 0.19584357758758691,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shirobon::undertale spider dance shirobon remix",
+    "affinity": 0.1375,
+    "selection": 0.1958433871411422,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shirobon::regain control",
+    "affinity": 0.1375,
+    "selection": 0.1958433871411422,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shirobon::mind pulse",
+    "affinity": 0.1375,
+    "selection": 0.1958433871411422,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "shirobon::play with fire",
+    "affinity": 0.1375,
+    "selection": 0.1958433871411422,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "pachelbel s canon in d major::largo maestoso piano and violin",
+    "affinity": 0.1375,
+    "selection": 0.19578725912718647,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "mike forst::plenitudes disasterpeace hypnagogic rework",
+    "affinity": 0.1375,
+    "selection": 0.19575884727414428,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "datassette::syncglitch",
+    "affinity": 0.1375,
+    "selection": 0.19575884727414428,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "magic sword::in the face of evil",
+    "affinity": 0.1375,
+    "selection": 0.19570678096828514,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "magic sword::the curse the toxic avenger remix",
+    "affinity": 0.1375,
+    "selection": 0.19570678096828514,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "magic sword::the way home",
+    "affinity": 0.1375,
+    "selection": 0.19570678096828514,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "magic sword::sword of truth",
+    "affinity": 0.1375,
+    "selection": 0.19570678096828514,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "waveshaper::a picture in motion",
+    "affinity": 0.1375,
+    "selection": 0.195701844458067,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "waveshaper::wisdom of rage",
+    "affinity": 0.1375,
+    "selection": 0.195701844458067,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "waveshaper::1982 space program",
+    "affinity": 0.1375,
+    "selection": 0.195701844458067,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "waveshaper::perspective",
+    "affinity": 0.1375,
+    "selection": 0.195701844458067,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "martin jacoby::la valse d amélie",
+    "affinity": 0.1375,
+    "selection": 0.19519601163375916,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "martin jacoby::kiss the rain",
+    "affinity": 0.1375,
+    "selection": 0.19519601163375916,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "martin jacoby::river flows in you",
+    "affinity": 0.1375,
+    "selection": 0.19519601163375916,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "martin jacoby::humility",
+    "affinity": 0.1375,
+    "selection": 0.19519601163375916,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "valentina lisitsa::glass glass the hours arr michael riesman morning passages",
+    "affinity": 0.1375,
+    "selection": 0.19480384568113362,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "valentina lisitsa::the seasons op 37a th 135 tchaikovsky the seasons op 37a th 135 3 march song of the lark",
+    "affinity": 0.1375,
+    "selection": 0.19480384568113362,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "daniel hope::aphex twin avril 14th",
+    "affinity": 0.1375,
+    "selection": 0.19439333435087722,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "daniel hope::west side story suite bernstein west side story suite ii maria version for solo violin and string orchestra",
+    "affinity": 0.1375,
+    "selection": 0.19439333435087722,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "health::bodyprison",
+    "affinity": 0.1375,
+    "selection": 0.1942491332509174,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "erik satie::gnossienne no1",
+    "affinity": 0.1375,
+    "selection": 0.19218659590267073,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "paul simon::you can call me al",
+    "affinity": 0.1375,
+    "selection": 0.1888425549829168,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "paul simon::50 ways to leave your lover",
+    "affinity": 0.1375,
+    "selection": 0.1888425549829168,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "paul simon::graceland",
+    "affinity": 0.1375,
+    "selection": 0.1888425549829168,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "paul simon::kodachrome",
+    "affinity": 0.1375,
+    "selection": 0.1888425549829168,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::bright lights bonus",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::technology feat theon cross ben lamar gay",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::black lion",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::autumn in new york",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::butterscotch",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::holy lands",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::gnu blue feat theon cross ben lamar gay",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::mantra",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "makaya mccraven::young genius",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "gil scott heron::where did the night go",
+    "affinity": 0.12222222222222223,
+    "selection": 0.18050585915387796,
+    "seed": 0.2222222222222222,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "lang lang::richter the departure",
+    "affinity": 0.1375,
+    "selection": 0.1749025680836613,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "lang lang::the well tempered clavier i prelude fugue no 1 in c major bwv 846 js bach the well tempered clavier i prelude fugue no 1 in c major bwv 846 i prelude",
+    "affinity": 0.1375,
+    "selection": 0.1749025680836613,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "lang lang::orchestral suite no 3 in d major bwv 1068 ii air on a g string arr for piano",
+    "affinity": 0.1375,
+    "selection": 0.1749025680836613,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "lang lang::children s album for piano book i khachaturian children s album for piano book i i andantino ivan sings",
+    "affinity": 0.1375,
+    "selection": 0.1749025680836613,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "jack wall::adrenaline",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16840883568981246,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "jack wall::embrace the madness",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16840883568981246,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "jack wall::raining the fire",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16840883568981246,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "tea party ideas::liszt love dreams b ckground music",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16834357758758695,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "benedict vale::pachelbel s canon",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16828725912718648,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "benedict vale::mozart sonata in a",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16828725912718648,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "calm music for studying::canon in d",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16828725912718648,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "music lab collective::pachelbel canon in d major p37",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16730384568113366,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "music lab collective::tiersen comptine dun autre été laprès midi",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16730384568113366,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "ludovico einaudi::petricor",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16689333435087722,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "max richter::richter spring 3 2012",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16689333435087722,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "creedence clearwater revival::have you ever seen the rain",
+    "affinity": 0.1375,
+    "selection": 0.16539237566296025,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "creedence clearwater revival::fortunate son",
+    "affinity": 0.1375,
+    "selection": 0.16539237566296025,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "creedence clearwater revival::proud mary",
+    "affinity": 0.1375,
+    "selection": 0.16539237566296025,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "philippe entremont::gymnopédie no 1",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16468659590267073,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "classical music 50 of the best::ave maria",
+    "affinity": 0.11000000000000001,
+    "selection": 0.16468659590267073,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "bob dylan::knockin on heaven s door",
+    "affinity": 0.1375,
+    "selection": 0.16262641600873193,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "bob dylan::like a rolling stone",
+    "affinity": 0.1375,
+    "selection": 0.16262641600873193,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "bob dylan::the times they are a changin",
+    "affinity": 0.1375,
+    "selection": 0.16262641600873193,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "bob dylan::hurricane",
+    "affinity": 0.1375,
+    "selection": 0.16262641600873193,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "elvis presley::santa bring my baby back to me",
+    "affinity": 0.1375,
+    "selection": 0.16262641600873193,
+    "seed": 0.25,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "camille thomas::piano sonata no 2 in b flat minor op 35 chopin piano sonata no 2 in b flat minor op 35 iii marche funèbre arr franchomme for 4 cellos",
+    "affinity": 0.11000000000000001,
+    "selection": 0.14265027175009898,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "rafał blechacz::chopin nocturne no 20 in c sharp minor op posth arr for violin and piano by milstein",
+    "affinity": 0.11000000000000001,
+    "selection": 0.14265027175009898,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "jan lisiecki::nocturnes op 9 chopin nocturnes op 9 no 2 in e flat major andante",
+    "affinity": 0.11000000000000001,
+    "selection": 0.14265027175009898,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   },
+   {
+    "key": "benjamin grosvenor::chopin berceuse in d flat major op 57",
+    "affinity": 0.11000000000000001,
+    "selection": 0.14265027175009898,
+    "seed": 0.2,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Possible match"
+   }
+  ],
+  "ranked_fresh": [
+   {
+    "key": "claude debussy::beethoven 11 bagatelles op 119 no 2 in c major andante con moto",
+    "affinity": 0.0,
+    "selection": 0.072950011262543,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::tchaikovsky swan lake op 20 act ii no 13d dance of the swans dance of the little swans",
+    "affinity": 0.0,
+    "selection": 0.072950011262543,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::tchaikovsky swan lake op 20 act iii no 19e pas de six variation iv",
+    "affinity": 0.0,
+    "selection": 0.072950011262543,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::mendelssohn songs without words book vi op 67 no 2 allegro leggiero mwv u145",
+    "affinity": 0.0,
+    "selection": 0.07279690880516711,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::schubert variation on a waltz by diabelli d 718",
+    "affinity": 0.0,
+    "selection": 0.07279690880516711,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::debussy children s corner cd 119 l 113 no 1 doctor gradus ad parnassum",
+    "affinity": 0.0,
+    "selection": 0.07279690880516711,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::debussy children s corner cd 119 l 113 no 2 jimbo s lullaby",
+    "affinity": 0.0,
+    "selection": 0.07279690880516711,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::debussy sonata for flute viola and harp cd 145 l 137 i pastorale",
+    "affinity": 0.0,
+    "selection": 0.07170465919798867,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "claude debussy::debussy sonata for flute viola and harp cd 145 l 137 ii interlude",
+    "affinity": 0.0,
+    "selection": 0.07170465919798867,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "3force::status quo",
+    "affinity": 0.0,
+    "selection": 0.07008102810690614,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   },
+   {
+    "key": "3force::street fighter",
+    "affinity": 0.0,
+    "selection": 0.07008102810690614,
+    "seed": 0.0,
+    "tags": 0.0,
+    "artist": 0.0,
+    "label": 0.0,
+    "label_text": "Stretch"
+   }
+  ],
+  "picks": [
+   {
+    "key": "ok go::get over it",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "ronald jenkees::synth one",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "waterflame::electroman adventures",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "rob hubbard::the chicken song",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "adhesive wombat::night shade",
+    "lane": "proven",
+    "slot": "exploration",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "kubbi::firelight",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "fantomenk::dance of the incognizant",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "rob simonsen::lfg theme from deadpool wolverine",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "waterflame::glorious morning",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.1,
+    "relaxed": false
+   },
+   {
+    "key": "rob hubbard::crazy comets main theme from crazy comets c64",
+    "lane": "proven",
+    "slot": "exploration",
+    "mmr_penalty": 0.1,
+    "relaxed": false
+   },
+   {
+    "key": "adhesive wombat::jiggy",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.1,
+    "relaxed": false
+   },
+   {
+    "key": "kubbi::pathfinder",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.1,
+    "relaxed": false
+   },
+   {
+    "key": "laura shigihara::loonboon",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.0,
+    "relaxed": false
+   },
+   {
+    "key": "fantomenk::crystal tokyo",
+    "lane": "proven",
+    "slot": "mmr",
+    "mmr_penalty": 0.1,
+    "relaxed": false
+   }
+  ],
+  "fresh_lane_exhausted": null,
+  "broad_appeal": [
+   {
+    "t": null,
+    "a": null,
+    "tags": [],
+    "result": 0.5
+   },
+   {
+    "t": 10000.0,
+    "a": 1000000.0,
+    "tags": [
+     "pop"
+    ],
+    "result": 0.805
+   },
+   {
+    "t": 500000.0,
+    "a": 20000000.0,
+    "tags": [
+     "pop",
+     "dance"
+    ],
+    "result": 0.9700000000000001
+   },
+   {
+    "t": 50.0,
+    "a": null,
+    "tags": [
+     "ambient",
+     "metal"
+    ],
+    "result": 0.315
+   },
+   {
+    "t": 1000.0,
+    "a": 100000.0,
+    "tags": [
+     "unknown-tag"
+    ],
+    "result": 0.5499999999999999
+   }
+  ]
+ },
  "dials": {
   "metrics": {
    "energy": {

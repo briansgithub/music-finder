@@ -173,8 +173,98 @@ def next_rec(
         dials=dials,
     )
     if not c:
+        if rec.last_exhaustion:
+            raise HTTPException(404, {"error": "fresh_exhausted", **rec.last_exhaustion})
         raise HTTPException(404, "no recommendation available")
-    return {"recommendation": _cand_payload(c), "filter_stats": rec.last_filter_stats}
+    payload = _cand_payload(c)
+    payload.update(_batch2_fields(rec, c))
+    return {"recommendation": payload, "filter_stats": rec.last_filter_stats}
+
+
+def _batch2_fields(rec, c) -> dict[str, Any]:
+    expanded = c.lane == "fresh" and (rec.fresh_expand_days or config.FRESH_DAYS) > config.FRESH_DAYS
+    return {
+        "affinity": c.affinity, "selection": c.selection, "p_like": c.confidence,
+        "match_label": rec.match_label(c), "slot": rec.last_slot,
+        "lane_label": f"fresh ({rec.fresh_expand_days}-day)" if expanded else c.lane,
+        "session_id": rec.session_id, "model_version": rec.model_version,
+    }
+
+
+class FreshExpandBody(BaseModel):
+    days: Optional[int] = 90  # None/0 = back to the normal 30-day window
+
+
+@app.post("/fresh_expand")
+def fresh_expand(body: FreshExpandBody) -> dict[str, Any]:
+    rec = get_rec()
+    rec.fresh_expand_days = body.days if body.days and body.days > config.FRESH_DAYS else None
+    return {"ok": True, "fresh_days": rec.fresh_expand_days or config.FRESH_DAYS}
+
+
+@app.get("/funnel")
+def funnel() -> dict[str, Any]:
+    rec = get_rec()
+    rec._ensure_pool(dials=_session_dials)
+    return {"funnel": rec.last_filter_stats.get("funnel", {}), "model": rec.model_version,
+            "session_id": rec.session_id}
+
+
+class FriendsBody(BaseModel):
+    artist: str
+    title: str
+    reaction: Optional[str] = None
+    rating: Optional[str] = None
+    tags: list[str] = Field(default_factory=list)
+    cluster: str = ""
+
+
+@app.get("/friends/queue")
+def friends_queue(limit: int = 30) -> dict[str, Any]:
+    from ..engine import friends
+    rec = get_rec()
+    q = friends.queue(rec.conn, limit=limit)
+    return {"queue": q, "note": "" if q else "No tracks reach broad appeal 0.70 yet (needs Last.fm listener data)."}
+
+
+@app.get("/friends/audition")
+def friends_audition(limit: int = 20) -> dict[str, Any]:
+    from ..engine import friends
+    rec = get_rec()
+    rec._ensure_pool(dials=_session_dials)
+    return {"audition": friends.audition(rec.conn, rec._cache_proven + rec._cache_fresh, limit=limit)}
+
+
+@app.post("/friends/react")
+def friends_react(body: FriendsBody) -> dict[str, Any]:
+    """Group reaction (liked|didnt_work|mixed) → audience:group only (no personal transfer)."""
+    from ..engine import friends
+    try:
+        fid = friends.group_react(get_rec().conn, body.artist, body.title, body.reaction or "", body.tags, body.cluster)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    return {"ok": True, "feedback_id": fid, "profile": "audience:group"}
+
+
+@app.post("/friends/rate")
+def friends_rate(body: FriendsBody) -> dict[str, Any]:
+    """My reaction in friends context → personal_friends_context only."""
+    from ..engine import friends
+    try:
+        fid = friends.friends_context_rate(get_rec().conn, body.artist, body.title, body.rating or "", body.tags, body.cluster)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    return {"ok": True, "feedback_id": fid, "profile": "personal_friends_context"}
+
+
+@app.post("/friends/teach")
+def friends_teach(body: FriendsBody) -> dict[str, Any]:
+    """Explicit "also teach my personal recs": a normal, undoable personal rating."""
+    if body.rating not in ("love", "like", "meh", "skip", "dislike"):
+        raise HTTPException(400, "rating must be love|like|meh|skip|dislike")
+    rec = get_rec()
+    rec.rate(body.artist, body.title, body.rating, cluster=body.cluster)
+    return {"ok": True, "profile": "personal", "undo_depth": len(rec.undo_stack)}
 
 
 @app.get("/batch")
@@ -244,10 +334,12 @@ def undo(body: Optional[UndoBody] = None) -> dict[str, Any]:
     res = rec.undo(displaced)
     if res is None:
         raise HTTPException(404, "nothing to undo")
+    payload = _cand_payload(res["candidate"])
+    payload.update(_batch2_fields(rec, res["candidate"]))
     return {
         "ok": True,
         "undone": res["kind"],
-        "recommendation": _cand_payload(res["candidate"]),
+        "recommendation": payload,
         "undo_depth": res["remaining"],
     }
 

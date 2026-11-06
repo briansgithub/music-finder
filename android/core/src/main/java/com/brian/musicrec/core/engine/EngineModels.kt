@@ -2,7 +2,7 @@ package com.brian.musicrec.core.engine
 
 /** Port of `musicrec.config` constants used by ranking. */
 object EngineConfig {
-    const val VERSION = "1.2.0-android"
+    const val VERSION = "1.3.0-android"
     const val PROVEN_MIN_CONFIDENCE = 0.45
     const val PROVEN_MIN_SOURCES = 2
     const val FRESH_DAYS = 30
@@ -105,6 +105,9 @@ data class Candidate(
     var score: Double = 0.0,
     var cluster: String = "other",
     var metrics: LinkedHashMap<String, MetricValue> = LinkedHashMap(),
+    /** Batch 2: personal affinity Z and the ranking score (Z + small legacy term). */
+    var affinity: Double = 0.0,
+    var selection: Double = 0.0,
 ) {
     fun key(): String = normalizeKey(artist, title)
 

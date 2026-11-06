@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import random
+import uuid
 from collections import OrderedDict, deque
 from typing import Any, Optional
 
@@ -19,7 +20,9 @@ from .learning import (
     snapshot_weights, thompson_sample_weights, update_from_implicit, update_from_rating,
 )
 from .lanes import apply_recency_filter, select_fresh, select_proven
-from .originality import build_blocklist, enforce_artist_diversity, is_blocked
+from .originality import build_blocklist, enforce_artist_diversity, is_blocked  # noqa: F401
+from . import affinity as aff
+from . import diversity as div
 from .session import SessionMemory
 from .watcher import fetch_watched_fresh
 
@@ -43,6 +46,24 @@ class Recommender:
         self.undo_stack: deque[dict[str, Any]] = deque(maxlen=MAX_UNDO)
         # key -> (recommendations_log id, Candidate) for recently served cards
         self._served: OrderedDict[str, tuple[int, Candidate]] = OrderedDict()
+        # Batch 2: affinity model, MMR history, exhaustion, logging
+        self.session_id = str(uuid.uuid4())
+        self.model_version = f"{config.VERSION}/{aff.MODEL_VERSION}"
+        self.history: list[div.Served] = []
+        self.model: aff.Model | None = None
+        self.last_exhaustion: dict | None = None
+        self.last_slot = ""
+        self._fresh_expand_days: int | None = None
+
+    @property
+    def fresh_expand_days(self) -> int | None:
+        return self._fresh_expand_days
+
+    @fresh_expand_days.setter
+    def fresh_expand_days(self, v: int | None) -> None:
+        if v != self._fresh_expand_days:
+            self._fresh_expand_days = v
+            self._built_for = None
 
     @property
     def fresh_min_confidence(self) -> float:
@@ -50,8 +71,10 @@ class Recommender:
 
     @fresh_min_confidence.setter
     def fresh_min_confidence(self, v: float) -> None:
-        self._fresh_min_confidence = max(0.0, min(1.0, float(v)))
-        self._built_for = None
+        c = max(0.0, min(1.0, float(v)))
+        if c != self._fresh_min_confidence:
+            self._fresh_min_confidence = c
+            self._built_for = None
 
     def _remember_served(self, cand: Candidate, log_id: int) -> None:
         self._served[cand.key()] = (log_id, cand)
@@ -98,10 +121,11 @@ class Recommender:
         proven_raw = self.gen.generate(
             artists, genre=genre, adventurous=adventurous, max_artists=20, per_artist=4
         )
-        fresh_raw = self.gen.generate_fresh(artists, days=config.FRESH_DAYS, limit=40)
+        fresh_days = self._fresh_expand_days or config.FRESH_DAYS
+        fresh_raw = self.gen.generate_fresh(artists, days=fresh_days, limit=40)
         # Favorite-artist watcher — top priority into fresh
         try:
-            watched = fetch_watched_fresh(self.conn, days=config.FRESH_DAYS)
+            watched = fetch_watched_fresh(self.conn, days=fresh_days)
             fresh_raw = watched + fresh_raw
         except Exception:
             pass
@@ -109,8 +133,11 @@ class Recommender:
         def filt(cands: list[Candidate]) -> list[Candidate]:
             return [c for c in cands if not is_blocked(c, blocked_keys, blocked_vids)]
 
+        n_proven, n_fresh = len(proven_raw), len(fresh_raw)
         proven_raw = filt(proven_raw)
         fresh_raw = filt(fresh_raw)
+        all_pool = list(proven_raw) + list(fresh_raw)
+        after_block = (len(proven_raw), len(fresh_raw))
 
         enabled_genres = dials.enabled_genres if dials else None
         proven_raw, q_proven = apply_candidate_quality_filters(
@@ -120,6 +147,7 @@ class Recommender:
             fresh_raw, session=self.session, enabled_genres=enabled_genres,
         )
 
+        after_quality = (len(proven_raw), len(fresh_raw))
         if recency and recency != "any":
             proven_raw = apply_recency_filter(proven_raw, recency)
             fresh_raw = apply_recency_filter(fresh_raw, recency)
@@ -138,15 +166,33 @@ class Recommender:
         fresh, fstats = select_fresh(
             self.conn, fresh_raw, w_fresh, obscurity=obscurity,
             adventurous=adventurous, genre=genre, dials=dials, calib=calib,
-            min_confidence=self.fresh_min_confidence,
+            min_confidence=self.fresh_min_confidence, days=fresh_days,
         )
+        m = aff.build_model(self.conn, all_pool)
+        self.model = m
+        # Artist spacing is done per card by MMR (diversity.py), not by dropping candidates.
+        self._cache_proven = aff.rank(m, proven)
+        self._cache_fresh = aff.rank(m, fresh)
+
+        def funnel(total, i, quality, lane_stats, eligible):
+            return {
+                "candidates": total, "rejected_blocked": total - after_block[i],
+                "rejected_quality": after_block[i] - after_quality[i], "quality_detail": quality,
+                "rejected_recency_filter": after_quality[i] - (len(proven_raw), len(fresh_raw))[i],
+                "lane_detail": lane_stats, "eligible": eligible,
+            }
+
         self.last_filter_stats = {
             "proven": pstats,
             "fresh": fstats,
             "quality": {"proven": q_proven, "fresh": q_fresh},
+            "funnel": {
+                "proven": funnel(n_proven, 0, q_proven, pstats, len(self._cache_proven)),
+                "fresh": funnel(n_fresh, 1, q_fresh, fstats, len(self._cache_fresh)),
+            },
+            "fresh_days": fresh_days,
+            "model": self.model_version,
         }
-        self._cache_proven = enforce_artist_diversity(proven, config.MAX_PER_ARTIST_BATCH)
-        self._cache_fresh = enforce_artist_diversity(fresh, config.MAX_PER_ARTIST_BATCH)
         self._built_for = key
 
     def next(
@@ -164,29 +210,44 @@ class Recommender:
             genre=genre, adventurous=adventurous, obscurity=obscurity,
             recency=recency, dials=dials,
         )
-        fresh_p = 0.25 + (0.2 if adventurous else 0.0)
-        pick_fresh = lane_pref == "fresh" or (lane_pref == "auto" and random.random() < fresh_p)
-        if lane_pref == "proven":
-            pick_fresh = False
-        pool = self._cache_fresh if pick_fresh and self._cache_fresh else self._cache_proven
-        if not pool:
-            pool = self._cache_fresh or self._cache_proven
-        if not pool:
+        self.last_exhaustion = None
+        chosen = div.choose_lane(lane_pref, self._cache_proven, self._cache_fresh, self.history)
+        if chosen is None:
+            if lane_pref == "fresh":
+                self.last_exhaustion = {
+                    "lane": "fresh", "fresh_days": self._fresh_expand_days or config.FRESH_DAYS,
+                    "can_expand": self._fresh_expand_days is None,
+                    "funnel": (self.last_filter_stats.get("funnel") or {}).get("fresh", {}),
+                }
             return None
-        if random.random() < config.EXPLORATION_RATE and len(pool) > 1:
-            cand = random.choice(pool[: min(12, len(pool))])
-        else:
-            cand = pool[0]
+        pool = self._cache_fresh if chosen == "fresh" else self._cache_proven
+        m = self.model
+        pk = div.pick(pool, self.history, m.stats) if m else None
+        if pk is None:
+            return None
+        cand = pk.cand
+        self.last_slot = pk.slot
         self._cache_proven = [c for c in self._cache_proven if c.key() != cand.key()]
         self._cache_fresh = [c for c in self._cache_fresh if c.key() != cand.key()]
         self.session.record_served(cand.artist, cand.title)
+        self.history.append(div.served(cand))
+        parts = aff.parts(m, cand)
+        metrics = dict(cand.metrics or {})
+        metrics["_log"] = aff.log_blob(
+            self.session_id, self.model_version, cand, parts, pk.slot, len(self.history),
+            chosen, pk.mmr_penalty, pk.relaxed,
+        )
         log_id = log_recommendation(self.conn, {
             "artist": cand.artist, "title": cand.title, "key": cand.key(),
             "lane": cand.lane, "confidence": cand.confidence, "why": cand.why,
-            "why_parts": cand.why_parts, "metrics": cand.metrics,
+            "why_parts": cand.why_parts, "metrics": metrics,
         })
         self._remember_served(cand, log_id)
         return cand
+
+    def match_label(self, cand: Candidate) -> str:
+        n = self.model.ratings_count if self.model else 0
+        return aff.match_label(cand.affinity, n, cand.confidence, self.last_slot == "exploration")
 
     def batch(
         self,
@@ -257,6 +318,10 @@ class Recommender:
             self.undo_stack.append(entry)
             return
         ensure_priors(self.conn)
+        self._built_for = None  # affinity stats derive from ratings → next card reflects this one
+        served = self._served.get(key)
+        if served:
+            aff.remember_features(self.conn, key, aff.cand_features(served[1]))
         feats = features or self._features_for(key, lane)
         learn_lane = lane or "proven"
         entry["weights"] = snapshot_weights(
@@ -302,6 +367,10 @@ class Recommender:
             if served:
                 conn.execute("DELETE FROM recommendations_log WHERE id=?", (served[0],))
             self.session.blocked_keys.discard(displaced_key)
+            for i in range(len(self.history) - 1, -1, -1):
+                if self.history[i].key == displaced_key:
+                    del self.history[i]
+                    break
         conn.commit()
         if e["artist_cf"]:
             if e["session_patterns"] is None:

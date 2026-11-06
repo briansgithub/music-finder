@@ -105,6 +105,9 @@ class VideoResolver(
         private val json = Json { ignoreUnknownKeys = true }
     }
 
+    /** Batch 2: when set, MusicBrainz goes through the one shared rate-limited queue. */
+    @Volatile var queue: RequestQueue? = null
+
     fun recordCorrection(artist: String, title: String, videoIdOrUrl: String, note: String = "wrong_song"): ResolveResult {
         val vid = YouTubeIds.extract(videoIdOrUrl) ?: videoIdOrUrl.trim()
         if (vid.length != 11) return ResolveResult(false, "", "bad_video_id", "bad_video_id", error = "video_id must be 11-char YouTube id")
@@ -189,6 +192,7 @@ class VideoResolver(
     }
 
     private fun mbGet(url: String): JsonObject {
+        queue?.let { return json.parseToJsonElement(it.getOrThrow(url)).jsonObject }
         val now = clock()
         // Clamp: a clock jump (or a different clock source) must never stall lookups.
         if (now < backoffUntil && backoffUntil - now <= BACKOFF_SEC) throw IllegalStateException("musicbrainz back-off")

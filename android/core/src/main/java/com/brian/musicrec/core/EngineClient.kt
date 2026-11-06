@@ -135,6 +135,11 @@ class EngineClient(
             tags = stringList(o.optJSONArray("tags")),
             playback = o.optString("playback", "handoff_youtube_music"),
             cluster = o.optString("cluster"),
+            affinity = o.optDouble("affinity", 0.0),
+            selection = o.optDouble("selection", 0.0),
+            matchLabel = o.optString("match_label"),
+            slot = o.optString("slot"),
+            laneLabel = o.optString("lane_label"),
         )
     }
 

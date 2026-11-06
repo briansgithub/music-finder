@@ -93,6 +93,31 @@ class MusicBrainzSource(Source):
         except Exception:
             return []
 
+    def artist_recent_recordings(self, artist: str, days: int = 90, limit: int = 25) -> list[Candidate]:
+        """New recordings by one (liked) artist, filtered on the recording's
+        ``firstreleasedate`` (not the release date, so reissues/compilations of old
+        songs never count as fresh). Mirrors the Android on-device refill."""
+        out: list[Candidate] = []
+        try:
+            a = self.find_artist(artist)
+            if not a or " ".join((a.get("name") or "").casefold().split()) != " ".join(artist.casefold().split()):
+                return []
+            cutoff = (date.today() - timedelta(days=days)).isoformat()
+            data = self._get("/recording", {"query": f"arid:{a['id']} AND firstreleasedate:[{cutoff} TO *]", "limit": limit})
+            for r in data.get("recordings") or []:
+                frd = (r.get("first-release-date") or "")[:10]
+                if len(frd) < 10 or frd < cutoff:
+                    continue
+                out.append(Candidate(
+                    artist=artist, title=r.get("title") or "", release_date=frd,
+                    source_signals={"musicbrainz_fresh": 1.0, "freshness": 1.0, "artist_overlap": 0.9},
+                    related_to_artists=[artist],
+                    external_ids={"original_date": frd, "mb_recording": r.get("id", "")},
+                ))
+        except Exception:
+            pass
+        return out
+
     def fresh_releases(self, days: int = 30, limit: int = 20) -> list[Candidate]:
         """Browse recent releases via MB search on date."""
         out: list[Candidate] = []
