@@ -37,6 +37,17 @@ Not built: no APK was produced. A build needs the user's approval.
   - At most 1 card per artist per 5 cards; artist spacing is relaxed first when nothing qualifies.
   - Exploration slot every 5th card (least-known candidate in the top 30).
   - In auto, fresh is a **25 % cap, not a quota**, and a fresh card is only offered within 0.15 affinity of the best proven.
+- **Next-card prefetch** (on-device)
+  - While a card is showing, the next card is computed in the background: pool rebuild, MMR pick, and a video-ID lookup (up to 2.5 s).
+  - On a rating or Not-now tap, the ready card is shown at once. In the background the app then saves the rating and learning update, serves and logs the shown card (logged when shown, never at prefetch), and starts the next prefetch.
+  - If the card is no longer valid, a new pick is swapped in without blocking. That covers:
+    - Meh/Dislike/Skip suppressing its work, or a just-disliked artist;
+    - already rated, blocked, or genre chips;
+    - artist spacing, or another card served meanwhile;
+    - lane/chip/dials changes, undo, imports, fresh settings, video corrections, and friends-mode actions.
+  - Undo stays exact: the displaced card is un-served.
+  - The Debug log shows `tap→card N ms` plus the prefetch compute time and any swap reason.
+  - The PC engine is unchanged; there is no rating-conditional branch pair.
 - **Logging:** session ID, model version, slot, lane choice, affinity, selection, p_like, MMR penalty and Z components are stored with every served card (`recommendations_log.metrics_snapshot._log`).
 ### Changed
 - Pools are ranked by selection, not the legacy score. Per-pool artist capping was replaced by MMR spacing.

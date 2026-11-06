@@ -27,6 +27,10 @@ interface MusicEngine {
     fun correctVideo(r: Recommendation, videoIdOrUrl: String): String
     /** If a background video lookup for [r] finishes in time, the card upgraded to an exact video; else null. */
     fun awaitVideo(r: Recommendation): Recommendation? = null
+    /** Compute the following card ahead of time (not served/logged). null = unsupported or nothing left. */
+    fun prefetchNext(lane: String, enabledGenres: List<String>?): LocalEngine.Prefetched? = null
+    /** Serve a prefetched card now on screen; returns a replacement when it became invalid. */
+    fun showPrefetched(p: LocalEngine.Prefetched, lane: String, enabledGenres: List<String>?): LocalEngine.Shown? = null
 }
 
 class RemoteMusicEngine(baseUrl: String) : MusicEngine {
@@ -49,6 +53,9 @@ class RemoteMusicEngine(baseUrl: String) : MusicEngine {
 class OnDeviceMusicEngine(val engine: LocalEngine) : MusicEngine {
     override val label = "on-device"
     override fun awaitVideo(r: Recommendation): Recommendation? = engine.awaitVideo(r)
+    override fun prefetchNext(lane: String, enabledGenres: List<String>?) = engine.prefetchNext(lane, enabledGenres)
+    override fun showPrefetched(p: LocalEngine.Prefetched, lane: String, enabledGenres: List<String>?) =
+        engine.showPrefetched(p, lane, enabledGenres)
     override fun next(lane: String, enabledGenres: List<String>?) = engine.next(lane, enabledGenres)
     override fun rate(r: Recommendation, rating: String): Int {
         engine.rate(r.artist, r.title, rating, r.lane, r.cluster, r.confidence, shown = r)

@@ -174,3 +174,17 @@ The Dislike button sits next to Love / Like / Meh.
   - `personal_friends_context` and `audience:group` = `feedback_events` rows of type `profile_judgment`, with a JSON detail.
   - Undo deletes the row.
 - **Fresh exhaustion:** `next(lane=fresh)` returns null (PC: 404 `fresh_exhausted`) together with `lastExhaustion` {fresh_days, can_expand, funnel}. The 90-day window comes from `freshExpandDays=90` (PC `POST /fresh_expand`).
+
+### Next-card prefetch (0.5.0)
+- **Engine API:** `LocalEngine.prefetchNext(lane, genres)` returns a `Prefetched` card. It has no side effects: nothing is logged, history is unchanged, and the vocabulary is not observed.
+- `rateAndShowPrefetched(shown, rating, p, …)` runs atomically:
+  1. it rates (or Not-nows) the card that was on screen;
+  2. it calls `showPrefetched`;
+  3. that runs `prefetchInvalidReason`: if it returns null, the prefetched card is served and logged; otherwise a fresh `next()` is served.
+- **Invalidation:**
+  - `stateGen` is bumped by undo, setDials, imports, fresh settings, correctVideo and friends actions;
+  - the request key changes with lane or genre chips;
+  - the history size changes when another card was served;
+  - per-card checks: blocked, session suppression or chips, artist spacing, already rated, artist just disliked.
+- **UI:** the view model shows `p.rec` immediately and settles in the background. Later taps wait for the settle to finish. A prefetch is only kept when it finished for the same card and request.
+

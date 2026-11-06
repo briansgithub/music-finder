@@ -139,7 +139,7 @@ class LocalEngine(
     var freshMinConfidence: Double = EngineConfig.FRESH_MIN_CONFIDENCE
         @Synchronized set(v) {
             val c = v.coerceIn(0.0, 1.0)
-            if (c != field) { field = c; builtFor = null }
+            if (c != field) { field = c; builtFor = null; invalidatePrefetch("fresh min confidence") }
         }
 
     /** How long next() waits for an online video lookup before handing off as a YTM search. */
@@ -164,7 +164,7 @@ class LocalEngine(
         private set
     /** null = 30-day fresh window; 90 = labeled expansion (Settings / exhaustion prompt). */
     var freshExpandDays: Int? = null
-        @Synchronized set(v) { if (v != field) { field = v; builtFor = null } }
+        @Synchronized set(v) { if (v != field) { field = v; builtFor = null; invalidatePrefetch("fresh window") } }
     /** Last.fm API key (Settings). Blank = Last.fm sources skipped. */
     @Volatile var lastfmApiKey: String = ""
     val queue = RequestQueue(store, net, clock, log)
@@ -207,6 +207,7 @@ class LocalEngine(
 
     @Synchronized
     fun importText(text: String): SeedImporter.Summary {
+        invalidatePrefetch("import")
         val s = SeedImporter(store).importText(text, clock())
         // Replay taste updates for ratings that came from the PC (default features; PC weights not in /export).
         for (r in s.newRatings) {
@@ -304,6 +305,11 @@ class LocalEngine(
         val pool = if (chosen == "fresh") cacheFresh else cacheProven
         val m = model ?: return null
         val pick = Diversity.pick(pool, history, m.stats) ?: return null
+        return serveCandidate(pick, chosen, m)
+    }
+
+    /** Side effects of putting [pick] on screen: pool removal, session, MMR history, served log. */
+    private fun serveCandidate(pick: Diversity.Pick, chosen: String, m: Affinity.Model): Candidate {
         val cand = pick.cand
         lastSlot = pick.slot
         cacheProven = cacheProven.filter { it.key() != cand.key() }
@@ -339,6 +345,130 @@ class LocalEngine(
         val rec = toRecommendation(c)
         prefetchVideoIds()
         return rec
+    }
+
+    // ================= next-card prefetch =================
+
+    /**
+     * Bumped by every change that can make a prefetched card wrong other than a
+     * plain rating of the current card (those are checked individually): undo,
+     * dials/chips/lane, imports, fresh settings, friends-mode actions.
+     */
+    @Volatile var stateGen: Long = 0
+        private set
+
+    private fun invalidatePrefetch(why: String) { stateGen++; log("prefetch invalidated: $why") }
+
+    /** A card computed ahead of time (pool build + pick + video resolve); NOT served or logged yet. */
+    data class Prefetched(
+        val rec: Recommendation,
+        internal val pick: Diversity.Pick,
+        internal val chosen: String,
+        internal val gen: Long,
+        internal val requestKey: String,
+        internal val historySize: Int,
+        val computeMs: Long,
+    ) { val key: String get() = pick.cand.key() }
+
+    private fun requestDials(lane: String, enabledGenres: List<String>?): DialSet {
+        var dials = sessionDials
+        if (lane.isNotEmpty() && lane != "auto") dials = dials.withLane(lane)
+        if (enabledGenres != null) dials = dials.copy(enabledGenres = enabledGenres.map { it.trim() }.filter { it.isNotEmpty() }.toSet())
+        return dials
+    }
+
+    private fun requestKey(lane: String, d: DialSet): String =
+        listOf(lane.ifEmpty { "auto" }, d.lane, d.preset, d.enabledGenresKey(), d.filters.toSortedMap(), d.targets.toSortedMap()).toString()
+
+    /**
+     * Compute the card that would follow the one on screen — pool rebuild, MMR pick,
+     * local + (bounded) online video resolve — without serving or logging it.
+     * Call off the UI thread while the current card is showing.
+     */
+    fun prefetchNext(lane: String = "auto", enabledGenres: List<String>? = null, videoWaitMs: Long = 2_500): Prefetched? {
+        val t0 = System.nanoTime()
+        val pre = synchronized(this) {
+            val dials = requestDials(lane, enabledGenres)
+            val lanePref = if (dials.lane.isNotEmpty() && dials.lane != "auto") dials.lane else lane
+            ensurePool(dials = dials)
+            val chosen = Diversity.chooseLane(lanePref, cacheProven, cacheFresh, history) ?: return null
+            val m = model ?: return null
+            val pick = Diversity.pick(if (chosen == "fresh") cacheFresh else cacheProven, history, m.stats) ?: return null
+            val rec = toRecommendation(pick.cand, observe = false, slot = pick.slot)
+            Prefetched(rec, pick, chosen, stateGen, requestKey(lane, dials), history.size, 0)
+        }
+        // Give a pending online lookup more time here (off the lock): nobody is waiting on this card yet.
+        val rec = if (pre.rec.videoId.length != 11) awaitVideo(pre.rec, videoWaitMs) ?: pre.rec else pre.rec
+        val ms = (System.nanoTime() - t0) / 1_000_000
+        log("prefetch ready in $ms ms: ${rec.artist} – ${rec.title} (${rec.ytmHandoff}, ${pre.pick.slot})")
+        return pre.copy(rec = rec, computeMs = ms)
+    }
+
+    /** Why [p] can no longer be shown as the next card, or null if it is still valid. */
+    @Synchronized
+    fun prefetchInvalidReason(p: Prefetched, lane: String = "auto", enabledGenres: List<String>? = null): String? {
+        val c = p.pick.cand
+        val dials = requestDials(lane, enabledGenres)
+        return when {
+            p.gen != stateGen -> "state changed (undo / dials / import / settings / friends)"
+            p.requestKey != requestKey(lane, dials) -> "lane or chips changed"
+            p.historySize != history.size -> "another card was served"
+            history.any { it.key == c.key() } -> "already served"
+            Originality.isBlocked(c, store.blockedKeys(), store.blockedVideoIds()) -> "blocked"
+            CandidateQuality.apply(listOf(c), session, dials.enabledGenres).kept.isEmpty() ->
+                "suppressed by session (meh/dislike/skip on this artist or work) or genre chips"
+            !p.pick.relaxed && Affinity.artistKey(c.artist) in history.takeLast(Diversity.ARTIST_SPACING - 1).map { it.artistKey } ->
+                "artist spacing"
+            store.ratings(50).any { it.key == c.key() } -> "already rated"
+            learning.artistWeights()["artist:${Learning.artistKey(c.artist)}"]?.let { it < 0 } == true &&
+                store.ratings(1).firstOrNull()?.let { it.rating == "dislike" && Learning.artistKey(it.artist) == Learning.artistKey(c.artist) } == true ->
+                "artist just disliked"
+            else -> null
+        }
+    }
+
+    /** [rec] null = nothing left (same as next() returning null). */
+    data class Shown(val rec: Recommendation?, val usedPrefetch: Boolean, val reason: String?)
+
+    /**
+     * Serve the prefetched card now that it is on screen (logged at display, not at
+     * prefetch). If something since made it invalid, a fresh pick is served instead
+     * and returned so the UI can swap it in.
+     */
+    @Synchronized
+    fun showPrefetched(p: Prefetched, lane: String = "auto", enabledGenres: List<String>? = null): Shown {
+        val why = prefetchInvalidReason(p, lane, enabledGenres)
+        if (why == null) {
+            ensurePool(dials = requestDials(lane, enabledGenres)) // rebuild after the rating so the pool/model are current
+            val m = model
+            if (m != null) {
+                lastExhaustion = null
+                serveCandidate(p.pick, p.chosen, m)
+                p.pick.cand.let { c ->
+                    vocab.observe(c.artist, "artist")
+                    if (c.cluster.isNotEmpty() && c.cluster != "other") vocab.observe(c.cluster, "genre")
+                    c.tags.forEach { vocab.observe(it, "tag") }
+                }
+                val rec = p.rec.copy(matchLabel = Affinity.matchLabel(p.rec.affinity, m.ratingsCount, p.rec.confidence, p.pick.slot == "exploration"))
+                prefetchVideoIds()
+                return Shown(rec, true, null)
+            }
+        }
+        log("prefetch miss: ${p.rec.artist} – ${p.rec.title}: ${why ?: "no model"} → fresh pick")
+        return Shown(next(lane, enabledGenres), false, why ?: "no model")
+    }
+
+    /**
+     * Atomically: persist the rating (or not-now) of the card that was on screen,
+     * then serve the prefetched card already displayed. Returns undo depth + outcome.
+     */
+    @Synchronized
+    fun rateAndShowPrefetched(
+        shown: Recommendation, rating: String, p: Prefetched, lane: String = "auto", enabledGenres: List<String>? = null,
+    ): Pair<Int, Shown> {
+        if (rating == "not_now") notNow(shown.artist, shown.title, shown.lane, shown = shown)
+        else rate(shown.artist, shown.title, rating, shown.lane, shown.cluster, shown.confidence, shown = shown)
+        return undoDepth() to showPrefetched(p, lane, enabledGenres)
     }
 
     private fun candVideoId(c: Candidate): String =
@@ -500,6 +630,7 @@ class LocalEngine(
     @Synchronized
     fun undo(displacedKey: String? = null): UndoResult? {
         val e = undoStack.removeLastOrNull() ?: return null
+        invalidatePrefetch("undo")
         val key = normalizeKey(e.rec.artist, e.rec.title)
         store.tx {
             e.ratingId?.let { store.deleteRating(it) }
@@ -691,6 +822,7 @@ class LocalEngine(
             put("profile", profile); put("rating", rating); reaction?.let { put("reaction", it) }
             put("features", JsonArray(Affinity.features(rec.artist, rec.tags, rec.cluster, null).map { JsonPrimitive(it) }))
         }
+        invalidatePrefetch("friends mode")
         val id = store.addFeedback(key, "profile_judgment", rec.artist, rec.title, detail.toString(), rec.lane, clock())
         pushUndo(UndoEntry("profile", rec, null, id, emptyList(), emptyList(), "", null))
         return id
@@ -711,8 +843,11 @@ class LocalEngine(
     }
 
     /** Explicit "also teach my personal recs": a normal (undoable) personal rating. */
-    fun teachPersonal(rec: Recommendation, rating: String) =
+    @Synchronized
+    fun teachPersonal(rec: Recommendation, rating: String) {
+        invalidatePrefetch("friends mode: teach personal")
         rate(rec.artist, rec.title, rating, lane = if (rec.lane == "fresh") "fresh" else "proven", cluster = rec.cluster, shown = rec)
+    }
 
     @Synchronized
     fun profileSizes(): Map<String, Int> = mapOf(
@@ -760,6 +895,7 @@ class LocalEngine(
         var d = DialSet(lane = lane.ifEmpty { "auto" }, preset = preset)
         if (preset.isNotEmpty()) d = runCatching { d.applyPreset(preset, SeedImporter.presets(store)) }.getOrDefault(d)
         d = d.copy(enabledGenres = enabledGenres?.map { it.trim() }?.filter { it.isNotEmpty() }?.toSet())
+        if (d != sessionDials) invalidatePrefetch("dials / chips / lane")
         sessionDials = d
         return dials()
     }
@@ -767,7 +903,7 @@ class LocalEngine(
     /** `POST /correct_video`: permanent "wrong song" override (applied after auto resolve). */
     @Synchronized
     fun correctVideo(artist: String, title: String, videoIdOrUrl: String): ResolveResult =
-        resolver.recordCorrection(artist, title, videoIdOrUrl)
+        resolver.recordCorrection(artist, title, videoIdOrUrl).also { invalidatePrefetch("video correction") }
 
     /** Refit Platt calibration from rated predictions (CLI `calibrate` on the PC). */
     @Synchronized

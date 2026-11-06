@@ -96,6 +96,71 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     var friendsAudition by mutableStateOf<List<com.brian.musicrec.core.engine.LocalEngine.FriendsCard>>(emptyList())
     var friendsStatus by mutableStateOf("")
 
+    // ---- next-card prefetch ----
+    @Volatile private var prefetched: com.brian.musicrec.core.engine.LocalEngine.Prefetched? = null
+    private var prefetchJob: kotlinx.coroutines.Job? = null
+    @Volatile private var prefetchToken = 0L
+    /** Background "persist rating + serve prefetched card"; later taps wait for it. */
+    private var settleJob: kotlinx.coroutines.Job? = null
+
+    /** Drop the ready card (lane/chip change, undo, mode switch, friends action …) and compute a new one. */
+    private fun invalidatePrefetch(why: String) {
+        if (prefetched != null) DebugLog.info("prefetch dropped: $why")
+        prefetched = null
+        prefetchToken++
+        prefetchJob?.cancel()
+        prefetchJob = null
+    }
+
+    /** While the current card shows, compute the next one (pool, pick, video ID) in the background. */
+    private fun schedulePrefetch() {
+        if (useRemote || rec == null) return
+        prefetchJob?.cancel()
+        val lane = dials.lane.ifBlank { "auto" }
+        val genres = dials.enabledGenres
+        val token = ++prefetchToken
+        val forCard = rec
+        prefetchJob = viewModelScope.launch(Dispatchers.IO) {
+            val p = runCatching { engine().prefetchNext(lane, genres) }
+                .onFailure { DebugLog.error("prefetch failed", it) }.getOrNull()
+            // Only keep it if nothing changed while computing (same request, same card on screen).
+            if (token == prefetchToken && rec?.artist == forCard?.artist && rec?.title == forCard?.title) prefetched = p
+        }
+    }
+
+    /**
+     * Rating tap with a ready prefetch: show it at once, then persist the rating +
+     * learning, serve/log the shown card, swap if it became invalid, and prefetch again.
+     */
+    private fun rateWithPrefetch(r: Recommendation, rating: String, p: com.brian.musicrec.core.engine.LocalEngine.Prefetched, t0: Long) {
+        prefetched = null
+        rec = p.rec
+        whyOpen = false
+        DebugLog.info("tap→card ${(System.nanoTime() - t0) / 1_000_000} ms ($rating, prefetched ${p.rec.artist} – ${p.rec.title}, computed in ${p.computeMs} ms)")
+        val lane = dials.lane.ifBlank { "auto" }
+        val genres = dials.enabledGenres
+        settleJob = viewModelScope.launch {
+            try {
+                val shown = withContext(Dispatchers.IO) {
+                    LocalEngineHolder.get(getApplication()).rateAndShowPrefetched(r, rating, p, lane, genres)
+                }
+                undoDepth = maxOf(0, shown.first)
+                val s = shown.second
+                if (s != null && !s.usedPrefetch) {
+                    rec = s.rec
+                    DebugLog.info("prefetch swap (${s.reason}) → ${s.rec?.let { "${it.artist} – ${it.title}" } ?: "nothing left"} after ${(System.nanoTime() - t0) / 1_000_000} ms")
+                } else if (s?.rec != null && rec?.title == p.rec.title && rec?.artist == p.rec.artist) {
+                    rec = s.rec // same card; refreshed match label
+                }
+                status = if (rec == null) "No recommendation" else "OK · on-device (prefetched)"
+                rec?.let { if (it.ytmHandoff != "watch") upgradeVideoLater(it) }
+                schedulePrefetch()
+            } catch (e: Exception) {
+                status = "rate failed: ${e.message}"
+            }
+        }
+    }
+
     init {
         LocalEngineHolder.allowNetworkResolve = allowOnlineLookup
         val saved = prefs.getString("enabled_genres", null)
@@ -119,6 +184,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun setRemote(on: Boolean) {
+        invalidatePrefetch("engine mode")
         useRemote = on
         prefs.edit().putBoolean("use_remote", on).putString("remote_url", baseUrl).apply()
         DebugLog.info("engine mode -> ${if (on) "remote $baseUrl" else "on-device"}")
@@ -154,6 +220,8 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
                 "No fresh releases left in the ${it["fresh_days"]}-day window (after filters)." +
                     if (it["can_expand"] == true) " You can widen it to 90 days — those cards are labeled “fresh (90-day)”." else ""
             }
+            invalidatePrefetch("new card loaded")
+            schedulePrefetch()
             status = when {
                 freshExhausted != null -> "Fresh lane exhausted"
                 r == null -> "No recommendation — enable more genres, or import a fresher seed in Settings."
@@ -170,6 +238,10 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     /** Skip / Love / Like / Meh: record rating (with shown confidence), then load the next card. */
     fun rate(rating: String) = viewModelScope.launch {
         val r = rec ?: return@launch
+        val t0 = System.nanoTime()
+        settleJob?.join() // previous tap's rating/serve must land first
+        val p = prefetched
+        if (p != null && !useRemote && !busy) { rateWithPrefetch(r, rating, p, t0); return@launch }
         busy = true
         try {
             val depth = withContext(Dispatchers.IO) {
@@ -177,7 +249,8 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
                 DebugLog.call("[${e.label}] rate($rating, ${r.artist} – ${r.title})") { e.rate(r, rating) }
             }
             undoDepth = maxOf(0, depth)
-            loadNext()
+            loadNext().join()
+            DebugLog.info("tap→card ${(System.nanoTime() - t0) / 1_000_000} ms ($rating, no prefetch ready)")
         } catch (e: Exception) {
             status = "rate failed: ${e.message}"
             busy = false
@@ -198,6 +271,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     var freshMinConfidence by mutableStateOf(prefs.getFloat("fresh_min_confidence", 0.70f))
 
     fun setFreshMin(v: Float) {
+        invalidatePrefetch("fresh min confidence")
         freshMinConfidence = (Math.round(v * 20f) / 20f).coerceIn(0f, 0.95f)
         prefs.edit().putFloat("fresh_min_confidence", freshMinConfidence).apply()
         if (!useRemote) viewModelScope.launch(Dispatchers.IO) {
@@ -206,6 +280,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun setExpand90(on: Boolean) {
+        invalidatePrefetch("fresh window")
         freshExpand90 = on
         prefs.edit().putBoolean("fresh_expand_90", on).apply()
         if (!useRemote) viewModelScope.launch(Dispatchers.IO) {
@@ -262,18 +337,21 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun groupReact(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, reaction: String) = viewModelScope.launch {
+        invalidatePrefetch("friends mode")
         withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).groupReact(card.rec, reaction) }
         undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
         friendsStatus = "Group reaction saved (${reaction.replace('_', ' ')}) — group profile only"
     }
 
     fun friendsContextRate(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, rating: String) = viewModelScope.launch {
+        invalidatePrefetch("friends mode")
         withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).friendsContextRate(card.rec, rating) }
         undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
         friendsStatus = "Saved $rating for friends context — your personal recs are unchanged"
     }
 
     fun teachPersonal(card: com.brian.musicrec.core.engine.LocalEngine.FriendsCard, rating: String) = viewModelScope.launch {
+        invalidatePrefetch("friends mode")
         withContext(Dispatchers.IO) { LocalEngineHolder.get(getApplication()).teachPersonal(card.rec, rating) }
         undoDepth = LocalEngineHolder.get(getApplication()).undoDepth()
         friendsStatus = "Also taught your personal recs: $rating"
@@ -281,6 +359,11 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
 
     fun notNow() = viewModelScope.launch {
         val r = rec ?: return@launch
+        settleJob?.join()
+        val p = prefetched
+        // not_now returns the lane to auto: a prefetch computed for a sticky lane is invalid.
+        if (p != null && !useRemote && !busy && dials.lane == "auto") { rateWithPrefetch(r, "not_now", p, System.nanoTime()); return@launch }
+        invalidatePrefetch("not now")
         busy = true
         try {
             val depth = withContext(Dispatchers.IO) {
@@ -303,7 +386,9 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
 
     /** Revert the latest rating / not-now and re-show that card. */
     fun undo() = viewModelScope.launch {
+        settleJob?.join()
         if (undoDepth <= 0) return@launch
+        invalidatePrefetch("undo")
         busy = true
         try {
             val shown = rec
@@ -319,6 +404,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
                 undoDepth = maxOf(0, res.second)
                 engineReachable = true
                 status = "Undone — ${res.first.artist} – ${res.first.title} is back"
+                schedulePrefetch()
             }
         } catch (e: Exception) {
             status = "undo failed: ${e.message}"
@@ -356,10 +442,12 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun applyLane(lane: String) = viewModelScope.launch {
+        invalidatePrefetch("lane → $lane")
         dials = dials.copy(lane = lane)
         persistDials()
         try {
             withContext(Dispatchers.IO) { engine().setDials(lane, dials.preset, dials.enabledGenres) }
+            schedulePrefetch()
         } catch (e: Exception) {
             status = "dials: ${e.message}"
         }
@@ -371,6 +459,7 @@ class RecViewModel(app: Application) : AndroidViewModel(app) {
         if (!on.add(genre)) on.remove(genre)
         val next = if (available.isNotEmpty() && on.containsAll(available)) null else on.toList()
         dials = dials.copy(enabledGenres = next)
+        invalidatePrefetch("genre chips")
         persistDials()
         try {
             withContext(Dispatchers.IO) { engine().setDials(dials.lane, dials.preset, next) }
