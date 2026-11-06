@@ -1,0 +1,44 @@
+{
+  "Focus": {
+    "description": "Calm, mid-tempo, less percussive — good for deep work",
+    "filters": {
+      "tempo_bpm": [60, 110],
+      "energy": [0.0, 0.55],
+      "percussiveness": [0.0, 0.55]
+    },
+    "targets": {
+      "instrumentalness": [0.7, 1.0],
+      "acousticness": [0.4, 0.6]
+    }
+  },
+  "New this week": {
+    "description": "Fresh lane bias: releases in the last 7 days",
+    "filters": {
+      "freshness_days": [0, 7]
+    },
+    "targets": {},
+    "lane": "fresh"
+  },
+  "Chill evening": {
+    "description": "Low energy, warm brightness",
+    "filters": {
+      "energy": [0.0, 0.45],
+      "loudness": [-40, -8]
+    },
+    "targets": {
+      "tempo_bpm": [70, 1.0],
+      "brightness": [0.35, 0.8]
+    }
+  },
+  "High energy": {
+    "description": "Upbeat electronic / dance leaning",
+    "filters": {
+      "tempo_bpm": [110, 160],
+      "energy": [0.55, 1.0]
+    },
+    "targets": {
+      "danceability": [0.7, 1.2],
+      "percussiveness": [0.55, 1.0]
+    }
+  }
+}

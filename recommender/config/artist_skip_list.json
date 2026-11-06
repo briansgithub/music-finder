@@ -1,0 +1,7 @@
+{
+  "artists": [
+    "Harry Mack"
+  ],
+  "channels": [],
+  "notes": "Case-insensitive exact artist/channel match. Editable; changes apply on next seed-clean / ingest."
+}

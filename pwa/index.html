@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f1115" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <title>musicrec — local</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>musicrec</h1>
+      <p class="sub">Local engine · play opens YouTube Music (no streaming here)</p>
+      <label class="api">API
+        <input id="apiBase" value="http://127.0.0.1:8765" />
+      </label>
+    </header>
+
+    <section id="card" class="card empty">
+      <p id="status">Connecting to local engine…</p>
+      <h2 id="title"></h2>
+      <p id="artist"></p>
+      <p id="meta"></p>
+      <p id="why"></p>
+      <div class="actions">
+        <button id="btnSkip" class="primary">Skip</button>
+        <button id="btnPlay" class="play" disabled>Play in YouTube Music</button>
+      </div>
+      <div class="rates">
+        <button data-rate="love">Love</button>
+        <button data-rate="like">Like</button>
+        <button data-rate="meh">Meh</button>
+        <button id="btnNotNow">Not now</button>
+      </div>
+    </section>
+
+    <section class="dials">
+      <h3>Genres</h3>
+      <p class="sub">All on by default (unconstrained). Tap off to leave the allowed set — suggestions match any remaining chip.</p>
+      <div id="genreChips" class="tags"></div>
+      <h3>Dials</h3>
+      <label>Lane
+        <select id="lane">
+          <option value="auto">auto</option>
+          <option value="proven">proven</option>
+          <option value="fresh">fresh</option>
+        </select>
+      </label>
+      <label>Preset
+        <select id="preset"><option value="">(none)</option></select>
+      </label>
+      <div id="tagDials" class="tags"></div>
+      <button id="btnApplyDials">Apply dials</button>
+    </section>
+
+    <footer>
+      <button id="btnHealth">Health</button>
+      <pre id="log"></pre>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

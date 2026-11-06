@@ -1,0 +1,33 @@
+# --- toolchains / builds ---
+android-sdk/
+**/build/
+**/.gradle/
+**/.kotlin/
+android/local.properties
+*.apk
+*.aab
+**/__pycache__/
+**/.pytest_cache/
+recommender/newpipe-cli/build/
+# --- personal data, DBs, exports, logs ---
+recommender/data/
+recommender/logs/
+recommender/reports/
+reports/
+takeout/
+upload-pack/
+liked_LL.json
+ll_page.html
+netease_list.txt
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+# --- archives / screenshots ---
+*.tgz
+*.zip
+*.png
+# --- secrets ---
+.env
+*.keystore
+*.jks
