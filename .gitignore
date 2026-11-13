@@ -31,4 +31,8 @@ netease_list.txt
 .env
 *.keystore
 *.jks
-secrets/
+secrets/*
+!secrets/lastfm.env.example
+# local JDK path helpers
+**/.java_env
+.java_env

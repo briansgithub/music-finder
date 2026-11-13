@@ -69,6 +69,15 @@ python cli.py serve --host 127.0.0.1 --port 8765
 
 `ratings.predicted_confidence` is a nullable column already; no extra migration is required.
 
+
+## Last.fm API key (optional)
+
+On-device candidate refill can use Last.fm. Copy `secrets/lastfm.env.example`
+to `secrets/lastfm.env` and set `LASTFM_API_KEY`. That file is gitignored.
+A build without it still works; Last.fm sources are skipped until you add a
+key here or in the app Settings. The Last.fm shared secret is not used and
+must not be packaged.
+
 ## Rebuild the debug APK
 
 On a machine with Android Studio (Ladybug+) / SDK 35 / JDK 17:
